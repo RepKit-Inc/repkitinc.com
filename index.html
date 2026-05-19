@@ -17,7 +17,8 @@
         .hero h1 span { color: #f4434e; }
         .hero p { font-size: 1.15rem; color: #9ca3af; max-width: 540px; margin: 0 auto 36px; }
         .badge-row { display: flex; justify-content: center; gap: 16px; margin-bottom: 20px; }
-        .badge { display: inline-block; background: #1a1b23; border: 1px solid #2a2b35; border-radius: 8px; padding: 10px 20px; color: #d1d5db; font-size: 0.9rem; }
+        .badge { display: inline-block; background: #1a1b23; border: 1px solid #2a2b35; border-radius: 8px; padding: 10px 20px; color: #d1d5db; font-size: 0.9rem; text-decoration: none; transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease; }
+        a.badge:hover { background: #23242e; border-color: #F4434E; transform: translateY(-1px); }
         .features { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
         .features h2 { color: #fff; text-align: center; font-size: 1.6rem; margin-bottom: 40px; }
         .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -52,7 +53,7 @@
         <h1>Your sales day,<br><span>simplified.</span></h1>
         <p>RepKit is the all-in-one productivity app designed exclusively for sales professionals. Stay organized, stay sharp, stay ahead.</p>
         <div class="badge-row">
-            <span class="badge">Coming Soon on iOS</span>
+            <a class="badge" href="https://apps.apple.com/app/id6759590146" target="_blank" rel="noopener">Download on the App Store</a>
             <span class="badge">Coming Soon on Android</span>
         </div>
     </div>
