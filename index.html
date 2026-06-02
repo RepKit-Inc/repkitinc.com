@@ -25,8 +25,9 @@
         .hero h1 span { color: #f4434e; }
         .hero p { font-size: 1.15rem; color: #9ca3af; max-width: 540px; margin: 0 auto 36px; }
         .badge-row { display: flex; justify-content: center; gap: 16px; margin-bottom: 20px; }
-        .badge { display: inline-block; background: #1a1b23; border: 1px solid #2a2b35; border-radius: 8px; padding: 10px 20px; color: #d1d5db; font-size: 0.9rem; text-decoration: none; transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease; }
-        a.badge:hover { background: #23242e; border-color: #F4434E; transform: translateY(-1px); }
+        .badge { display: inline-block; background: #1a1b23; border: 1.5px solid #F4434E; border-radius: 8px; padding: 10px 20px; color: #d1d5db; font-size: 0.9rem; text-decoration: none; transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; }
+        a.badge:hover { background: #23242e; border-color: #ff5963; box-shadow: 0 0 18px rgba(244,67,78,0.30); transform: translateY(-1px); }
+        .badge.soon { border-color: rgba(244,67,78,0.40); color: #6b7280; }
         .video-section { max-width: 760px; margin: 0 auto; padding: 20px 24px 24px; }
         .video-stage { display: flex; align-items: center; justify-content: center; gap: 18px; }
         .video-wrap { position: relative; width: 100%; max-width: 440px; border-radius: 24px; overflow: hidden; border: 1px solid #2a2b35;
@@ -63,8 +64,8 @@
         .newsletter-form input { flex: 1; background: #0f1016; border: 1px solid #2a2b35; border-radius: 8px; padding: 12px 16px; color: #fff; font-size: 0.95rem; outline: none; }
         .newsletter-form input::placeholder { color: #6b7280; }
         .newsletter-form input:focus { border-color: #F4434E; }
-        .newsletter-form button { background: #F4434E; color: #fff; border: none; border-radius: 8px; padding: 12px 22px; font-size: 0.95rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background 0.15s ease, transform 0.15s ease; }
-        .newsletter-form button:hover { background: #ff5963; transform: translateY(-1px); }
+        .newsletter-form button { background: #1a1b23; color: #d1d5db; border: 1.5px solid #F4434E; border-radius: 8px; padding: 12px 22px; font-size: 0.95rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; }
+        .newsletter-form button:hover { background: #23242e; border-color: #ff5963; box-shadow: 0 0 18px rgba(244,67,78,0.30); transform: translateY(-1px); }
         @media (max-width: 600px) {
             .wordmark { font-size: 4rem; }
             .slogan { font-size: 1.25rem; }
@@ -94,7 +95,7 @@
         <p>RepKit is the all-in-one productivity app designed exclusively for sales professionals. Stay organized, stay sharp, stay ahead.</p>
         <div class="badge-row">
             <a class="badge" href="https://apps.apple.com/app/id6759590146" target="_blank" rel="noopener">Download on the App Store</a>
-            <span class="badge">Coming Soon on Android</span>
+            <span class="badge soon">Coming Soon on Android</span>
         </div>
     </div>
 
