@@ -59,15 +59,9 @@
         .newsletter-card { background: #1a1b23; border: 1px solid #2a2b35; border-radius: 12px; padding: 28px 28px 24px; text-align: center; }
         .newsletter-card h2 { color: #fff; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
         .newsletter-card .nl-desc { color: #9ca3af; font-size: 0.95rem; max-width: 460px; margin: 0 auto 4px; }
-        .newsletter-card .nl-prompt { color: #e8e6e6; font-size: 1rem; font-weight: 600; margin: 0 auto 20px; }
-        .newsletter-embed { max-width: 460px; margin: 0 auto; }
-        .newsletter-embed iframe { width: 100% !important; }
-        .newsletter-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; }
-        .newsletter-form input { flex: 1; background: #0f1016; border: 1px solid #2a2b35; border-radius: 8px; padding: 12px 16px; color: #fff; font-size: 0.95rem; outline: none; }
-        .newsletter-form input::placeholder { color: #6b7280; }
-        .newsletter-form input:focus { border-color: #F4434E; }
-        .newsletter-form button { background: #1a1b23; color: #d1d5db; border: 1.5px solid #F4434E; border-radius: 8px; padding: 12px 22px; font-size: 0.95rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; }
-        .newsletter-form button:hover { background: #23242e; border-color: #ff5963; box-shadow: 0 0 18px rgba(244,67,78,0.30); transform: translateY(-1px); }
+        .newsletter-card .nl-prompt { color: #e8e6e6; font-size: 1rem; font-weight: 600; margin: 0 auto 22px; }
+        .nl-cta { display: inline-block; background: #1a1b23; color: #fff; border: 1.5px solid #F4434E; border-radius: 8px; padding: 13px 34px; font-size: 1rem; font-weight: 700; text-decoration: none; transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; }
+        .nl-cta:hover { background: #23242e; border-color: #ff5963; box-shadow: 0 0 18px rgba(244,67,78,0.30); transform: translateY(-1px); }
         @media (max-width: 600px) {
             .wordmark { font-size: 4rem; }
             .slogan { font-size: 1.25rem; }
@@ -186,11 +180,7 @@
             <h2>The Sales Rep's Edge</h2>
             <p class="nl-desc">Tactics, truths, and tools for the rep — free, every week.</p>
             <p class="nl-prompt">Get the newsletter in your inbox</p>
-            <!-- beehiiv inline subscribe form (real on-site signup, no redirect).
-                 Form is built/styled in beehiiv → Subscribers → Subscribe forms. -->
-            <div class="newsletter-embed">
-                <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="f18614ef-2f11-4ccd-83d2-c5cf2b292ac7"></script>
-            </div>
+            <a class="nl-cta" href="https://repkit.beehiiv.com/subscribe" target="_blank" rel="noopener">Subscribe — it's free</a>
         </div>
     </div>
 
