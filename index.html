@@ -60,6 +60,8 @@
         .newsletter-card h2 { color: #fff; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
         .newsletter-card .nl-desc { color: #9ca3af; font-size: 0.95rem; max-width: 460px; margin: 0 auto 4px; }
         .newsletter-card .nl-prompt { color: #e8e6e6; font-size: 1rem; font-weight: 600; margin: 0 auto 20px; }
+        .newsletter-embed { max-width: 460px; margin: 0 auto; }
+        .newsletter-embed iframe { width: 100% !important; }
         .newsletter-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; }
         .newsletter-form input { flex: 1; background: #0f1016; border: 1px solid #2a2b35; border-radius: 8px; padding: 12px 16px; color: #fff; font-size: 0.95rem; outline: none; }
         .newsletter-form input::placeholder { color: #6b7280; }
@@ -184,12 +186,11 @@
             <h2>The Sales Rep's Edge</h2>
             <p class="nl-desc">Tactics, truths, and tools for the rep — free, every week.</p>
             <p class="nl-prompt">Get the newsletter in your inbox</p>
-            <!-- For inline subscribe (no redirect), replace this <form> with your beehiiv embed code:
-                 beehiiv → Grow → Subscribe Forms → Embed. Update the action URL if you move to a custom domain (e.g. newsletter.repkitapp.com). -->
-            <form class="newsletter-form" action="https://repkit.beehiiv.com/subscribe" method="get" target="_blank" rel="noopener">
-                <input type="email" name="email" placeholder="Email" aria-label="Email address" required>
-                <button type="submit">Subscribe</button>
-            </form>
+            <!-- beehiiv inline subscribe form (real on-site signup, no redirect).
+                 Form is built/styled in beehiiv → Subscribers → Subscribe forms. -->
+            <div class="newsletter-embed">
+                <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="f18614ef-2f11-4ccd-83d2-c5cf2b292ac7"></script>
+            </div>
         </div>
     </div>
 
