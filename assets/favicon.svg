@@ -1,53 +1,39 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="1024" fill="#0f1016"/>
+  <g transform="translate(-88, 247) scale(2)">
+    <defs>
+      <linearGradient id="redWhiteGradientSVG" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#f4434e" />
+        <stop offset="60%" stop-color="#f4434e" />
+        <stop offset="80%" stop-color="#8a3d45" />
+        <stop offset="100%" stop-color="#26272f" />
+      </linearGradient>
+      <radialGradient id="innerGlowSVG">
+        <stop offset="0%" stop-color="#f4434e" stop-opacity="0.3" />
+        <stop offset="100%" stop-color="#0f1016" stop-opacity="0" />
+      </radialGradient>
+      <filter id="redGlowSVG" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur1"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur2"/>
+        <feFlood flood-color="#f4434e" flood-opacity="0.8"/>
+        <feComposite in2="blur1" operator="in" result="glow1"/>
+        <feFlood flood-color="#f4434e" flood-opacity="0.4"/>
+        <feComposite in2="blur2" operator="in" result="glow2"/>
+        <feMerge>
+          <feMergeNode in="glow2"/>
+          <feMergeNode in="glow1"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
 
-      <svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-        <!-- Background fills entire frame -->
-        <rect width="1024" height="1024" fill="#0f1016"/>
-        
-        <!-- Briefcase - scaled and centered perfectly -->
-        <g transform="translate(-88, 247) scale(2)">
-          <defs>
-            <linearGradient id="redWhiteGradientSVG" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#f4434e" />
-              <stop offset="60%" stop-color="#f4434e" />
-              <stop offset="80%" stop-color="#8a3d45" />
-              <stop offset="100%" stop-color="#26272f" />
-            </linearGradient>
-            
-            <radialGradient id="innerGlowSVG">
-              <stop offset="0%" stop-color="#f4434e" stop-opacity="0.3" />
-              <stop offset="100%" stop-color="#0f1016" stop-opacity="0" />
-            </radialGradient>
-            
-            <filter id="redGlowSVG" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur1"/>
-              <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur2"/>
-              <feFlood flood-color="#f4434e" flood-opacity="0.8"/>
-              <feComposite in2="blur1" operator="in" result="glow1"/>
-              <feFlood flood-color="#f4434e" flood-opacity="0.4"/>
-              <feComposite in2="blur2" operator="in" result="glow2"/>
-              <feMerge>
-                <feMergeNode in="glow2"/>
-                <feMergeNode in="glow1"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
-          
-          <path d="M 240 50 L 240 30 Q 240 15 255 15 L 345 15 Q 360 15 360 30 L 360 50" stroke="url(#redWhiteGradientSVG)" stroke-width="10" fill="none" stroke-linecap="round" filter="url(#redGlowSVG)"/>
-          <rect x="120" y="50" width="360" height="200" rx="25" fill="#0f1016" stroke="url(#redWhiteGradientSVG)" stroke-width="8" filter="url(#redGlowSVG)"/>
-          <rect x="120" y="50" width="360" height="200" rx="25" fill="url(#innerGlowSVG)" pointer-events="none"/>
-          
-          <!-- RK logo with circle -->
-          <g transform="translate(300, 150)">
-            <!-- Circle outline -->
-            <circle cx="0" cy="0" r="68" fill="none" stroke="#f4434e" stroke-width="4"/>
-            
-            <!-- R letter (left side, italic/slanted) -->
-            <text x="-22" y="26" font-family="Arial, sans-serif" font-size="75" font-weight="bold" fill="#f4434e" text-anchor="middle" transform="skewX(-5)">R</text>
-            
-            <!-- K letter (right side, italic/slanted) -->
-            <text x="20" y="26" font-family="Arial, sans-serif" font-size="75" font-weight="bold" fill="#f4434e" text-anchor="middle" transform="skewX(-5)">K</text>
-          </g>
-        </g>
-      </svg>
-    
+    <path d="M 240 50 L 240 30 Q 240 15 255 15 L 345 15 Q 360 15 360 30 L 360 50" stroke="url(#redWhiteGradientSVG)" stroke-width="10" fill="none" stroke-linecap="round" filter="url(#redGlowSVG)"/>
+    <rect x="120" y="50" width="360" height="200" rx="25" fill="#0f1016" stroke="url(#redWhiteGradientSVG)" stroke-width="8" filter="url(#redGlowSVG)"/>
+    <rect x="120" y="50" width="360" height="200" rx="25" fill="url(#innerGlowSVG)" pointer-events="none"/>
+
+    <g transform="translate(300, 150)">
+      <text x="-50" y="57" font-family="Arial, sans-serif" font-size="160" font-weight="bold" fill="#f4434e" text-anchor="middle" transform="skewX(-5)">R</text>
+      <text x="50" y="57" font-family="Arial, sans-serif" font-size="160" font-weight="bold" fill="#f4434e" text-anchor="middle" transform="skewX(-5)">K</text>
+    </g>
+  </g>
+</svg>
