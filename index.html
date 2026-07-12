@@ -113,55 +113,18 @@
         </div>
     </div>
 
-    <div class="video-section">
+    <div class="video-section rk-carousel">
         <div class="video-stage">
-            <button class="vid-arrow" id="vidPrev" aria-label="Previous video">&#8249;</button>
+            <button class="vid-arrow prev" aria-label="Previous video">&#8249;</button>
             <div class="video-wrap">
-                <video id="vidPlayer" src="/assets/launch.mp4" poster="/assets/launch-poster.jpg"
+                <video class="vid-player" src="/assets/launch.mp4" poster="/assets/launch-poster.jpg"
                        controls playsinline preload="metadata"></video>
             </div>
-            <button class="vid-arrow" id="vidNext" aria-label="Next video">&#8250;</button>
+            <button class="vid-arrow next" aria-label="Next video">&#8250;</button>
         </div>
-        <div class="vid-label" id="vidLabel">The Launch Film</div>
-        <div class="vid-dots" id="vidDots"></div>
+        <div class="vid-label">The Launch Film</div>
+        <div class="vid-dots"></div>
     </div>
-
-    <script>
-        // Add future product demos by appending to this array.
-        const RK_VIDEOS = [
-            { src: "/assets/launch.mp4", poster: "/assets/launch-poster.jpg", label: "The Launch Film" },
-            { src: "/assets/demo1.mp4", poster: "/assets/demo1-poster.jpg", label: "Product Demo: Meeting Prep" },
-        ];
-        (function () {
-            let i = 0;
-            const player = document.getElementById("vidPlayer");
-            const label = document.getElementById("vidLabel");
-            const prev = document.getElementById("vidPrev");
-            const next = document.getElementById("vidNext");
-            const dotsWrap = document.getElementById("vidDots");
-
-            RK_VIDEOS.forEach((_, idx) => {
-                const d = document.createElement("div");
-                d.className = "vid-dot" + (idx === 0 ? " active" : "");
-                d.addEventListener("click", () => go(idx));
-                dotsWrap.appendChild(d);
-            });
-            const dots = Array.from(dotsWrap.children);
-
-            function go(n) {
-                i = (n + RK_VIDEOS.length) % RK_VIDEOS.length;
-                const v = RK_VIDEOS[i];
-                player.pause();
-                player.setAttribute("poster", v.poster);
-                player.src = v.src;
-                player.load();
-                label.textContent = v.label;
-                dots.forEach((d, idx) => d.classList.toggle("active", idx === i));
-            }
-            prev.addEventListener("click", () => go(i - 1));
-            next.addEventListener("click", () => go(i + 1));
-        })();
-    </script>
 
     <div class="features">
         <h2>Everything a rep needs. Nothing they don't.</h2>
@@ -193,6 +156,19 @@
         </div>
     </div>
 
+    <div class="video-section rk-carousel">
+        <div class="video-stage">
+            <button class="vid-arrow prev" aria-label="Previous video">&#8249;</button>
+            <div class="video-wrap">
+                <video class="vid-player" src="/assets/launch.mp4" poster="/assets/launch-poster.jpg"
+                       controls playsinline preload="metadata"></video>
+            </div>
+            <button class="vid-arrow next" aria-label="Next video">&#8250;</button>
+        </div>
+        <div class="vid-label">The Launch Film</div>
+        <div class="vid-dots"></div>
+    </div>
+
     <div class="cta">
         <p>$9.99/month &middot; 7-day free trial &middot; Cancel anytime</p>
     </div>
@@ -219,5 +195,42 @@
             </div>
         </div>
     </div>
+<script>
+    // Video carousel — one shared list, any number of .rk-carousel instances.
+    // Add future product demos by appending to this array.
+    const RK_VIDEOS = [
+        { src: "/assets/launch.mp4", poster: "/assets/launch-poster.jpg", label: "The Launch Film" },
+        { src: "/assets/demo1.mp4", poster: "/assets/demo1-poster.jpg", label: "Product Demo: Meeting Prep" },
+    ];
+    document.querySelectorAll(".rk-carousel").forEach((root) => {
+        let i = 0;
+        const player = root.querySelector(".vid-player");
+        const label = root.querySelector(".vid-label");
+        const prev = root.querySelector(".vid-arrow.prev");
+        const next = root.querySelector(".vid-arrow.next");
+        const dotsWrap = root.querySelector(".vid-dots");
+
+        RK_VIDEOS.forEach((_, idx) => {
+            const d = document.createElement("div");
+            d.className = "vid-dot" + (idx === 0 ? " active" : "");
+            d.addEventListener("click", () => go(idx));
+            dotsWrap.appendChild(d);
+        });
+        const dots = Array.from(dotsWrap.children);
+
+        function go(n) {
+            i = (n + RK_VIDEOS.length) % RK_VIDEOS.length;
+            const v = RK_VIDEOS[i];
+            player.pause();
+            player.setAttribute("poster", v.poster);
+            player.src = v.src;
+            player.load();
+            label.textContent = v.label;
+            dots.forEach((d, idx) => d.classList.toggle("active", idx === i));
+        }
+        prev.addEventListener("click", () => go(i - 1));
+        next.addEventListener("click", () => go(i + 1));
+    });
+</script>
 </body>
 </html>
