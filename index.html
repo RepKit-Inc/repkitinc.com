@@ -199,6 +199,25 @@
         { src: "/assets/launch.mp4", poster: "/assets/launch-poster.jpg", label: "The Launch Film" },
         { src: "/assets/demo1.mp4", poster: "/assets/demo1-poster.jpg", label: "Product Demo: Meeting Prep" },
     ];
+    // Keep the hero rolling: browsers pause muted autoplay video in
+    // low-power / background states and don't always resume it.
+    (function () {
+        const hero = document.querySelector(".hero-video");
+        if (!hero) return;
+        let inView = false;
+        const tryPlay = () => { if (hero.paused) hero.play().catch(() => {}); };
+        new IntersectionObserver(
+            (entries) => entries.forEach((e) => { inView = e.isIntersecting; if (inView) tryPlay(); }),
+            { threshold: 0.25 }
+        ).observe(hero);
+        // no controls on the hero, so any pause is browser-initiated — resume it
+        hero.addEventListener("pause", () => {
+            setTimeout(() => { if (inView && !document.hidden) tryPlay(); }, 250);
+        });
+        document.addEventListener("visibilitychange", () => { if (!document.hidden) tryPlay(); });
+        window.addEventListener("touchstart", tryPlay, { once: true, passive: true });
+    })();
+
     document.querySelectorAll(".rk-carousel").forEach((root) => {
         let i = 0;
         const player = root.querySelector(".vid-player");
