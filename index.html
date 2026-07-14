@@ -95,8 +95,9 @@
         .footer-socials a:hover { color: #F4434E; transform: translateY(-1px); }
         .footer-socials svg { width: 19px; height: 19px; fill: currentColor; display: block; }
         @media (max-width: 600px) {
-            .nav { flex-direction: column; gap: 12px; padding: 16px 20px 8px; }
-            .nav-links { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px 18px; }
+            .nav { flex-direction: row-reverse; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px 10px; }
+            .nav-links { display: flex; align-items: center; gap: 0; }
+            .nav-links a:not(.nav-login) { display: none; } /* Privacy/Terms/Support live in the footer on mobile */
             .nav-links a { margin-left: 0; font-size: 0.95rem; }
             .nav-links a.nav-login { padding: 9px 22px; }
             .wordmark { font-size: 4rem; }
