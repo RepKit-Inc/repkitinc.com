@@ -283,5 +283,45 @@
         next.addEventListener("click", () => go(i + 1));
     });
 </script>
+<!-- Store-click conversion tracking.
+     The install itself happens on Apple's/Google's servers where no pixel can
+     see it, so a click on a store badge is the furthest down the funnel we can
+     measure. Fires to all four pixels + GA4 so every ad platform can report
+     (and eventually optimize toward) intent rather than just page views.
+     Delegated off document so it also covers badges added later. -->
+<script>
+    // Fill these in once created; each is inert until then.
+    var RK_GOOGLE_ADS_CONVERSION_LABEL = "";  // Google Ads > Goals > Conversions > new "Store click" action
+    var RK_X_EVENT_ID = "";                   // X Ads > Events Manager > new "Store click" event
+
+    document.addEventListener("click", function (e) {
+        var link = e.target.closest('a[href*="apps.apple.com"], a[href*="play.google.com"]');
+        if (!link) return;
+
+        var store = link.href.indexOf("apps.apple.com") > -1 ? "app_store" : "play_store";
+
+        // GA4 — custom event, segmentable by utm_source in reports
+        if (typeof gtag === "function") {
+            gtag("event", "store_click", { store: store, link_url: link.href });
+            if (RK_GOOGLE_ADS_CONVERSION_LABEL) {
+                gtag("event", "conversion", {
+                    send_to: "AW-18318992954/" + RK_GOOGLE_ADS_CONVERSION_LABEL,
+                });
+            }
+        }
+        // Meta — standard Lead event so it stays optimizable
+        if (typeof fbq === "function") {
+            fbq("track", "Lead", { content_name: store });
+        }
+        // Reddit — standard Lead event
+        if (typeof rdt === "function") {
+            rdt("track", "Lead", { itemCount: 1 });
+        }
+        // X — needs the generated event id, otherwise skipped
+        if (typeof twq === "function" && RK_X_EVENT_ID) {
+            twq("event", RK_X_EVENT_ID, { contents: [{ content_name: store }] });
+        }
+    });
+</script>
 </body>
 </html>
