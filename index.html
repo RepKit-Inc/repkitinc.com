@@ -135,7 +135,7 @@
             <a href="/privacy.html">Privacy</a>
             <a href="/terms.html">Terms</a>
             <a href="/support.html">Support</a>
-            <a href="https://app.repkitapp.com/login" class="nav-login">Log in / Sign up</a>
+            <a href="https://app.repkitapp.com/login" class="nav-login">Log in</a>
         </div>
     </div>
 
@@ -146,6 +146,9 @@
         <div class="badge-row">
             <a class="badge" href="https://apps.apple.com/app/id6759590146" target="_blank" rel="noopener">Download on the App Store</a>
             <a class="badge" href="https://play.google.com/store/apps/details?id=com.repkitinc.app" target="_blank" rel="noopener">Get it on Google Play</a>
+            <!-- Web sign-up is the one path where the whole funnel is ours: no
+                 store review, no 15-30% cut, and the visitor never leaves. -->
+            <a class="badge" href="https://app.repkitapp.com/login?mode=signup">Sign up on the web</a>
         </div>
     </div>
 
@@ -296,10 +299,18 @@
     var RK_X_EVENT_ID = "";                   // X Ads > Events Manager > new "Store click" event
 
     document.addEventListener("click", function (e) {
-        var link = e.target.closest('a[href*="apps.apple.com"], a[href*="play.google.com"]');
+        var link = e.target.closest(
+            'a[href*="apps.apple.com"], a[href*="play.google.com"], a[href*="app.repkitapp.com"]'
+        );
         if (!link) return;
 
-        var store = link.href.indexOf("apps.apple.com") > -1 ? "app_store" : "play_store";
+        // Web sign-up is the one destination we own end to end, so it's worth
+        // separating from the two store hand-offs rather than lumping them.
+        var store = link.href.indexOf("apps.apple.com") > -1
+            ? "app_store"
+            : link.href.indexOf("play.google.com") > -1
+                ? "play_store"
+                : "web_signup";
 
         // GA4 — custom event, segmentable by utm_source in reports
         if (typeof gtag === "function") {
