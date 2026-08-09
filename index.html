@@ -112,18 +112,12 @@
             display: flex; flex-direction: column; }
         .feature-card h3 { color: #fff; font-size: 1rem; margin-bottom: 8px; }
         .feature-card p { color: #9ca3af; font-size: 0.9rem; margin: 0; }
-        /* Fixed-height image slot with object-fit: cover. This is what lets
-           mobile and web screenshots sit in the same grid — every card shows
-           the same landscape window regardless of the source aspect ratio,
-           so the mix reads as deliberate instead of mismatched. */
-        .feature-shot { width: 100%; height: 150px; object-fit: cover; object-position: top center;
-            border-radius: 8px; border: 1px solid #2a2b35; background: #0f1016;
-            margin-bottom: 14px; display: block; }
-        /* Tiny platform tag so a browser shot next to a phone shot reads as
-           intentional. */
-        .shot-tag { display: inline-block; font-size: 0.7rem; letter-spacing: 0.5px;
-            text-transform: uppercase; color: #6b7280; border: 1px solid #2a2b35;
-            border-radius: 4px; padding: 1px 6px; margin-left: 8px; vertical-align: middle; }
+        /* Tall slot with object-fit: contain so the WHOLE screenshot shows —
+           nothing cropped away. Portrait phone shots letterbox at the sides,
+           web shots at the top/bottom; the transparent background makes that
+           padding invisible against the card. */
+        .feature-shot { width: 100%; height: 360px; object-fit: contain;
+            border-radius: 8px; margin-bottom: 16px; display: block; }
         .cta { max-width: 800px; margin: 0 auto; border-top: 1px solid #1f2937; text-align: center; padding: 28px 24px 4px; }
         .cta p { color: #9ca3af; font-size: 1rem; }
         .footer { max-width: 800px; margin: 0 auto; padding: 18px 24px 24px; display: flex; justify-content: space-between; align-items: center; }
@@ -178,7 +172,7 @@
                  store review, no 15-30% cut, and the visitor never leaves. -->
             <a class="badge" href="https://app.repkitapp.com/login?mode=signup">Sign up on the web</a>
         </div>
-        <p class="trial-note"><strong>7-day free trial</strong> &middot; then $9.99/month &middot; cancel anytime</p>
+        <p class="trial-note"><strong>7-day free trial</strong></p>
     </div>
 
     <div class="video-section">
@@ -197,53 +191,53 @@
         </div>
     </div>
 
-    <div class="showcase">
-        <img src="/assets/features/dashboard.jpg"
-             alt="RepKit web dashboard: quota forecast, daily agenda, and recent meetings"
-             loading="lazy" width="1600" height="822">
-        <p>Your command center — on the web, synced with the app.</p>
-    </div>
-
     <div class="features">
         <h2>Built for the rep. Not the company.</h2>
         <div class="feature-grid">
             <div class="feature-card">
                 <img class="feature-shot" src="/assets/features/agenda.jpg"
-                     alt="Daily Agenda & Progress in RepKit" loading="lazy" width="800" height="500">
-                <h3>Daily Agenda & Progress<span class="shot-tag">iPhone</span></h3>
+                     alt="Daily Agenda & Progress in RepKit" loading="lazy">
+                <h3>Daily Agenda & Progress</h3>
                 <p>Set your daily goals and track progress in real time. See your day at a glance and stay on pace.</p>
             </div>
             <div class="feature-card">
                 <img class="feature-shot" src="/assets/features/prep.jpg"
-                     alt="AI Meeting Prep in RepKit" loading="lazy" width="800" height="500">
-                <h3>AI Meeting Prep<span class="shot-tag">iPhone</span></h3>
+                     alt="AI Meeting Prep in RepKit" loading="lazy">
+                <h3>AI Meeting Prep</h3>
                 <p>Research accounts, brainstorm discovery questions, and walk into every call ready — personalized to how you sell.</p>
             </div>
             <div class="feature-card">
                 <img class="feature-shot" src="/assets/features/agent.jpg"
-                     alt="AI Agent in RepKit" loading="lazy" width="800" height="500">
-                <h3>AI Agent<span class="shot-tag">iPhone</span></h3>
+                     alt="AI Agent in RepKit" loading="lazy">
+                <h3>AI Agent</h3>
                 <p>Log notes by voice or text, get instant answers, and automate the busywork that slows you down.</p>
             </div>
             <div class="feature-card">
                 <img class="feature-shot" src="/assets/features/wisdom.jpg"
-                     alt="Philosophy & Mindset in RepKit" loading="lazy" width="800" height="500">
-                <h3>Philosophy & Mindset<span class="shot-tag">iPhone</span></h3>
+                     alt="Philosophy & Mindset in RepKit" loading="lazy">
+                <h3>Philosophy & Mindset</h3>
                 <p>Sharpen your sales edge with curated frameworks, motivation, and daily quotes.</p>
             </div>
             <div class="feature-card">
                 <img class="feature-shot" src="/assets/features/career.jpg"
-                     alt="Career Hub in RepKit" loading="lazy" width="800" height="500">
-                <h3>Career Hub<span class="shot-tag">Web</span></h3>
+                     alt="Career Hub in RepKit" loading="lazy">
+                <h3>Career Hub</h3>
                 <p>Track your job pipeline, history, and professional growth — all in one place.</p>
             </div>
             <div class="feature-card">
                 <img class="feature-shot" src="/assets/features/pipeline.jpg"
-                     alt="Pipeline and Commission in RepKit" loading="lazy" width="800" height="500">
-                <h3>Pipeline &amp; Commission<span class="shot-tag">Web</span></h3>
+                     alt="Pipeline and Commission in RepKit" loading="lazy">
+                <h3>Pipeline &amp; Commission</h3>
                 <p>Track pipeline health and see exactly what each deal pays you. No dashboards for managers, no CRM busywork.</p>
             </div>
         </div>
+    </div>
+
+    <div class="showcase">
+        <img src="/assets/features/dashboard.jpg"
+             alt="RepKit web dashboard: quota forecast, daily agenda, and recent meetings"
+             loading="lazy" width="1600" height="822">
+        <p>Your command center — on the web, synced with the app.</p>
     </div>
 
     <div class="video-section rk-carousel">
