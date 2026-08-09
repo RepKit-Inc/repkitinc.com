@@ -71,7 +71,12 @@
         .hero h1 { color: #fff; font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px; }
         .hero h1 span { color: #f4434e; }
         .hero p { font-size: 1.15rem; color: #9ca3af; max-width: 540px; margin: 0 auto 36px; }
-        .badge-row { display: flex; justify-content: center; gap: 16px; margin-bottom: 20px; }
+        .badge-row { display: flex; justify-content: center; gap: 16px; margin-bottom: 14px; }
+        /* Trial terms sit directly under the CTAs — the free trial is the
+           lowest-friction promise we have, and it was previously buried in
+           the footer where almost nobody scrolled to it. */
+        .trial-note { color: #9ca3af; font-size: 0.9rem; margin: 0 0 20px; }
+        .trial-note strong { color: #E8E6E6; font-weight: 600; }
         .badge { display: inline-block; background: #1a1b23; border: 1.5px solid #F4434E; border-radius: 8px; padding: 10px 20px; color: #d1d5db; font-size: 0.9rem; text-decoration: none; transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; }
         a.badge:hover { background: #23242e; border-color: #ff5963; box-shadow: 0 0 18px rgba(244,67,78,0.30); transform: translateY(-1px); }
         .badge.soon { border-color: rgba(244,67,78,0.40); color: #6b7280; }
@@ -90,12 +95,35 @@
         .vid-dots { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
         .vid-dot { width: 8px; height: 8px; border-radius: 50%; background: #3a3b45; cursor: pointer; transition: background 0.15s ease, transform 0.15s ease; }
         .vid-dot.active { background: #F4434E; transform: scale(1.2); }
+        /* Full-width web dashboard. Too dense to survive a 150px card crop,
+           and it does a different job than the six feature shots: it shows the
+           whole product at once, before the grid breaks it into parts. Also
+           balances the portrait/mobile hero video and backs up the
+           "Sign up on the web" CTA with proof a desktop product exists. */
+        .showcase { max-width: 1040px; margin: 0 auto; padding: 8px 24px 8px; text-align: center; }
+        .showcase img { width: 100%; height: auto; display: block; border-radius: 14px;
+            border: 1px solid #2a2b35;
+            box-shadow: 0 0 0 1px rgba(244,67,78,0.08), 0 24px 60px rgba(0,0,0,0.55); }
+        .showcase p { color: #9ca3af; font-size: 0.9rem; margin: 14px 0 0; }
         .features { max-width: 800px; margin: 0 auto; padding: 40px 24px 48px; }
         .features h2 { color: #fff; text-align: center; font-size: 1.6rem; margin-bottom: 40px; }
         .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        .feature-card { background: #1a1b23; border: 1px solid #2a2b35; border-radius: 12px; padding: 24px; }
+        .feature-card { background: #1a1b23; border: 1px solid #2a2b35; border-radius: 12px; padding: 24px;
+            display: flex; flex-direction: column; }
         .feature-card h3 { color: #fff; font-size: 1rem; margin-bottom: 8px; }
         .feature-card p { color: #9ca3af; font-size: 0.9rem; margin: 0; }
+        /* Fixed-height image slot with object-fit: cover. This is what lets
+           mobile and web screenshots sit in the same grid — every card shows
+           the same landscape window regardless of the source aspect ratio,
+           so the mix reads as deliberate instead of mismatched. */
+        .feature-shot { width: 100%; height: 150px; object-fit: cover; object-position: top center;
+            border-radius: 8px; border: 1px solid #2a2b35; background: #0f1016;
+            margin-bottom: 14px; display: block; }
+        /* Tiny platform tag so a browser shot next to a phone shot reads as
+           intentional. */
+        .shot-tag { display: inline-block; font-size: 0.7rem; letter-spacing: 0.5px;
+            text-transform: uppercase; color: #6b7280; border: 1px solid #2a2b35;
+            border-radius: 4px; padding: 1px 6px; margin-left: 8px; vertical-align: middle; }
         .cta { max-width: 800px; margin: 0 auto; border-top: 1px solid #1f2937; text-align: center; padding: 28px 24px 4px; }
         .cta p { color: #9ca3af; font-size: 1rem; }
         .footer { max-width: 800px; margin: 0 auto; padding: 18px 24px 24px; display: flex; justify-content: space-between; align-items: center; }
@@ -150,43 +178,69 @@
                  store review, no 15-30% cut, and the visitor never leaves. -->
             <a class="badge" href="https://app.repkitapp.com/login?mode=signup">Sign up on the web</a>
         </div>
+        <p class="trial-note"><strong>7-day free trial</strong> &middot; then $9.99/month &middot; cancel anytime</p>
     </div>
 
     <div class="video-section">
         <div class="video-stage">
             <div class="video-wrap">
+                <!-- poster: without it, this 779px-tall element is a blank
+                     black box until the video decodes — and stays blank if
+                     autoplay is blocked (Low Power Mode, data saver, reduced
+                     motion). The frame chosen is the AI prep screen, so the
+                     fallback still shows the product doing its main job. -->
                 <video class="hero-video" src="/assets/hero.mp4"
+                       poster="/assets/hero-poster.jpg"
                        autoplay muted loop playsinline preload="auto"
                        aria-label="RepKit product montage"></video>
             </div>
         </div>
     </div>
 
+    <div class="showcase">
+        <img src="/assets/features/dashboard.jpg"
+             alt="RepKit web dashboard: quota forecast, daily agenda, and recent meetings"
+             loading="lazy" width="1600" height="822">
+        <p>Your command center — on the web, synced with the app.</p>
+    </div>
+
     <div class="features">
-        <h2>Everything a rep needs. Nothing they don't.</h2>
+        <h2>Built for the rep. Not the company.</h2>
         <div class="feature-grid">
             <div class="feature-card">
-                <h3>Daily Agenda & Progress</h3>
+                <img class="feature-shot" src="/assets/features/agenda.jpg"
+                     alt="Daily Agenda & Progress in RepKit" loading="lazy" width="800" height="500">
+                <h3>Daily Agenda & Progress<span class="shot-tag">iPhone</span></h3>
                 <p>Set your daily goals and track progress in real time. See your day at a glance and stay on pace.</p>
             </div>
             <div class="feature-card">
-                <h3>AI Meeting Prep</h3>
+                <img class="feature-shot" src="/assets/features/prep.jpg"
+                     alt="AI Meeting Prep in RepKit" loading="lazy" width="800" height="500">
+                <h3>AI Meeting Prep<span class="shot-tag">iPhone</span></h3>
                 <p>Research accounts, brainstorm discovery questions, and walk into every call ready — personalized to how you sell.</p>
             </div>
             <div class="feature-card">
-                <h3>AI Agent</h3>
+                <img class="feature-shot" src="/assets/features/agent.jpg"
+                     alt="AI Agent in RepKit" loading="lazy" width="800" height="500">
+                <h3>AI Agent<span class="shot-tag">iPhone</span></h3>
                 <p>Log notes by voice or text, get instant answers, and automate the busywork that slows you down.</p>
             </div>
             <div class="feature-card">
-                <h3>Philosophy & Mindset</h3>
+                <img class="feature-shot" src="/assets/features/wisdom.jpg"
+                     alt="Philosophy & Mindset in RepKit" loading="lazy" width="800" height="500">
+                <h3>Philosophy & Mindset<span class="shot-tag">iPhone</span></h3>
                 <p>Sharpen your sales edge with curated frameworks, motivation, and daily quotes.</p>
             </div>
             <div class="feature-card">
-                <h3>Career Hub</h3>
+                <img class="feature-shot" src="/assets/features/career.jpg"
+                     alt="Career Hub in RepKit" loading="lazy" width="800" height="500">
+                <h3>Career Hub<span class="shot-tag">Web</span></h3>
                 <p>Track your job pipeline, history, and professional growth — all in one place.</p>
             </div>
             <div class="feature-card">
-                <h3>Pipeline &amp; Commission</h3>
+                <img class="feature-shot" src="/assets/features/pipeline.jpg"
+                     alt="Pipeline and Commission in RepKit" loading="lazy" width="800" height="500">
+                <h3>Pipeline &amp; Commission<span class="shot-tag">Web</span></h3>
                 <p>Track pipeline health and see exactly what each deal pays you. No dashboards for managers, no CRM busywork.</p>
             </div>
         </div>
