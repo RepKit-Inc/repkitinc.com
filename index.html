@@ -63,7 +63,7 @@
         .nav-links a:hover { color: #fff; }
         .nav-links a.nav-login { color: #fff; background: #f4434e; border-radius: 8px; padding: 8px 18px; font-weight: 600; transition: background 0.15s; white-space: nowrap; }
         .nav-links a.nav-login:hover { background: #ff5963; color: #fff; }
-        .hero { max-width: 800px; margin: 0 auto; padding: 80px 24px 20px; text-align: center; }
+        .hero { max-width: 800px; margin: 0 auto; padding: 80px 24px 46px; text-align: center; }
         .wordmark { font-size: 7rem; font-weight: 800; letter-spacing: -4px; line-height: 1; margin-bottom: 8px;
             background: linear-gradient(95deg, #F4434E 0%, #D4404A 38%, #6F343A 70%, #3A2227 100%);
             -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: #F4434E; }
@@ -72,9 +72,9 @@
         .hero h1 span { color: #f4434e; }
         .hero p { font-size: 1.15rem; color: #9ca3af; max-width: 540px; margin: 0 auto 36px; }
         .badge-row { display: flex; justify-content: center; gap: 16px; }
-        /* The free-trial hook lives inside the hero paragraph now; brighten it
-           so it still reads as the call to action it is. */
-        .hero p strong { color: #E8E6E6; font-weight: 600; }
+        /* The free-trial hook gets its own line beneath the pitch and reads as
+           the lead-in to the store buttons, hence the trailing colon. */
+        .trial-cta { display: block; margin-top: 16px; color: #E8E6E6; font-weight: 600; }
         .badge { display: inline-block; background: #1a1b23; border: 1.5px solid #F4434E; border-radius: 8px; padding: 10px 20px; color: #d1d5db; font-size: 0.9rem; text-decoration: none; transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; }
         a.badge:hover { background: #23242e; border-color: #ff5963; box-shadow: 0 0 18px rgba(244,67,78,0.30); transform: translateY(-1px); }
         .badge.soon { border-color: rgba(244,67,78,0.40); color: #6b7280; }
@@ -172,7 +172,7 @@
     <div class="hero">
         <div class="wordmark">RepKit</div>
         <p class="slogan">The Sales Rep's Edge</p>
-        <p>RepKit is the all-in-one productivity app designed exclusively for sales professionals. Stay organized, stay sharp, stay ahead. <strong>Start your 7-day free trial.</strong></p>
+        <p>RepKit is the all-in-one productivity app designed exclusively for sales professionals. Stay organized, stay sharp, stay ahead.<span class="trial-cta">Start your 7-day free trial today:</span></p>
         <div class="badge-row">
             <a class="badge" href="https://apps.apple.com/app/id6759590146" target="_blank" rel="noopener">Download on the App Store</a>
             <a class="badge" href="https://play.google.com/store/apps/details?id=com.repkitinc.app" target="_blank" rel="noopener">Get it on Google Play</a>
