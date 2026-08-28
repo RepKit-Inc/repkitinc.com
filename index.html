@@ -106,6 +106,7 @@
         .features { max-width: 900px; margin: 0 auto; padding: 40px 24px 0; }
         .features h2 { color: #fff; text-align: center; font-size: 1.6rem; margin-bottom: 40px; }
         .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .feature-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
         .feature-card { background: #1a1b23; border: 1px solid #2a2b35; border-radius: 12px; padding: 24px;
             display: flex; flex-direction: column; }
         .feature-card h3 { color: #fff; font-size: 1rem; margin-bottom: 8px; }
@@ -212,6 +213,12 @@
                      alt="AI Meeting Prep in RepKit" loading="lazy"></div>
                 <h3>AI Meeting Prep</h3>
                 <p>Research accounts, brainstorm discovery questions, and walk into every call ready — personalized to how you sell.</p>
+            </div>
+            <div class="feature-card">
+                <div class="shot-stage"><img class="feature-shot" src="/assets/features/memory.jpg"
+                     alt="Post-call notes in RepKit feeding the next AI prep" loading="lazy"></div>
+                <h3>Prep That Compounds</h3>
+                <p>Your post-call notes feed the next prep — the AI gets smarter about every account with each call.</p>
             </div>
             <div class="feature-card">
                 <div class="shot-stage"><img class="feature-shot" src="/assets/features/agent.jpg"
