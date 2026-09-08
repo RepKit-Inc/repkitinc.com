@@ -132,6 +132,24 @@
             border-radius: 20px; border: 2px solid rgba(255,255,255,0.10);
             box-shadow: 0 16px 40px rgba(0,0,0,0.55), 0 0 46px rgba(244,67,78,0.20);
             display: block; }
+        /* Pricing — free vs Pro (1.1.7 freemium) */
+        .pricing { max-width: 900px; margin: 0 auto; padding: 40px 24px 24px; }
+        .pricing h2 { color: #fff; text-align: center; font-size: 1.6rem; margin-bottom: 8px; }
+        .pricing .sub { color: #9ca3af; text-align: center; font-size: 0.95rem; margin-bottom: 28px; }
+        .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .price-card { background: #1a1b23; border: 1px solid #2a2b35; border-radius: 12px; padding: 24px; }
+        .price-card.pro { border-color: rgba(244,67,78,0.55); box-shadow: 0 0 32px rgba(244,67,78,0.12); }
+        .price-card h3 { color: #fff; font-size: 1.05rem; margin-bottom: 2px; }
+        .price-card .amount { color: #fff; font-size: 1.7rem; font-weight: 800; margin: 6px 0 2px; }
+        .price-card .amount span { color: #9ca3af; font-size: 0.85rem; font-weight: 500; }
+        .price-card .note { color: #9ca3af; font-size: 0.8rem; margin-bottom: 14px; }
+        .price-card ul { list-style: none; padding: 0; margin: 0; }
+        .price-card li { color: #d1d5db; font-size: 0.88rem; padding: 4px 0 4px 22px; position: relative; }
+        .price-card li::before { content: "✓"; position: absolute; left: 0; color: #3fdb2a; font-weight: 700; }
+        .price-card.pro li::before { color: #f4434e; }
+        .trust-line { color: #9ca3af; text-align: center; font-size: 0.82rem; margin-top: 16px; }
+        .trust-line strong { color: #fff; }
+        @media (max-width: 640px) { .price-grid { grid-template-columns: 1fr; } }
         .cta { max-width: 800px; margin: 0 auto; border-top: 1px solid #1f2937; text-align: center; padding: 28px 24px 4px; }
         .cta p { color: #9ca3af; font-size: 1rem; }
         .footer { max-width: 800px; margin: 0 auto; padding: 18px 24px 24px; display: flex; justify-content: space-between; align-items: center; }
@@ -274,6 +292,36 @@
         </div>
         <div class="vid-label">The Launch Film</div>
         <div class="vid-dots"></div>
+    </div>
+
+    <div class="pricing">
+        <h2>Start free. Upgrade when it's working.</h2>
+        <p class="sub">Every core tool is free forever — the AI locks in after you've felt what it does.</p>
+        <div class="price-grid">
+            <div class="price-card">
+                <h3>Free</h3>
+                <div class="amount">$0</div>
+                <div class="note">No card required</div>
+                <ul>
+                    <li>Daily goals &amp; to-dos</li>
+                    <li>Pipeline &amp; commission — 5 active deals</li>
+                    <li>Career hub &amp; manual notes</li>
+                    <li>15 AI messages + 3 AI meeting preps to start</li>
+                </ul>
+            </div>
+            <div class="price-card pro">
+                <h3>Pro</h3>
+                <div class="amount">$9.99<span>/mo</span> &nbsp;·&nbsp; $99.99<span>/yr</span></div>
+                <div class="note">7-day free trial on both plans</div>
+                <ul>
+                    <li>Unlimited AI meeting prep &amp; chat</li>
+                    <li>Unlimited pipeline &amp; full history</li>
+                    <li>Weekly pipeline recap</li>
+                    <li>Prep that compounds call over call</li>
+                </ul>
+            </div>
+        </div>
+        <p class="trust-line"><strong>You won't be charged today</strong> — trials bill after 7 days, cancel anytime, and we'll remind you before it ends.</p>
     </div>
 
     <div class="cta">
