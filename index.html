@@ -75,6 +75,10 @@
         /* The free-trial hook gets its own line beneath the pitch and reads as
            the lead-in to the store buttons, hence the trailing colon. */
         .trial-cta { display: block; margin-top: 16px; color: #E8E6E6; font-weight: 600; }
+        .hero .pitch { color: #fff; font-weight: 600; }
+        /* The badge matching the visitor's platform is filled, not outlined. */
+        .badge.primary { background: #F4434E; color: #fff; font-weight: 600; }
+        a.badge.primary:hover { background: #ff5963; }
         .badge { display: inline-block; background: #1a1b23; border: 1.5px solid #F4434E; border-radius: 8px; padding: 10px 20px; color: #d1d5db; font-size: 0.9rem; text-decoration: none; transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; }
         a.badge:hover { background: #23242e; border-color: #ff5963; box-shadow: 0 0 18px rgba(244,67,78,0.30); transform: translateY(-1px); }
         .badge.soon { border-color: rgba(244,67,78,0.40); color: #6b7280; }
@@ -196,13 +200,15 @@
     <div class="hero">
         <div class="wordmark">RepKit</div>
         <p class="slogan">The Sales Rep's Edge</p>
-        <p>RepKit is the all-in-one productivity app designed exclusively for sales professionals. Stay organized, stay sharp, stay ahead.<span class="trial-cta">Start your 7-day free trial today:</span></p>
+        <p><span class="pitch">Built for the rep. Not the company.</span><span class="trial-cta">Start free today:</span></p>
+        <!-- The visitor's own platform gets the filled button and first slot
+             (JS at the bottom of the page); the other two stay as outlines. -->
         <div class="badge-row">
-            <a class="badge" href="https://apps.apple.com/app/id6759590146" target="_blank" rel="noopener">Download on the App Store</a>
-            <a class="badge" href="https://play.google.com/store/apps/details?id=com.repkitinc.app" target="_blank" rel="noopener">Get it on Google Play</a>
+            <a class="badge" data-store="ios" href="https://apps.apple.com/app/id6759590146" target="_blank" rel="noopener">Download on the App Store</a>
+            <a class="badge" data-store="android" href="https://play.google.com/store/apps/details?id=com.repkitinc.app" target="_blank" rel="noopener">Get it on Google Play</a>
             <!-- Web sign-up is the one path where the whole funnel is ours: no
                  store review, no 15-30% cut, and the visitor never leaves. -->
-            <a class="badge" href="https://app.repkitapp.com/login?mode=signup">Sign up on the web</a>
+            <a class="badge" data-store="web" href="https://app.repkitapp.com/login?mode=signup">Sign up on the web</a>
         </div>
     </div>
 
@@ -223,7 +229,7 @@
     </div>
 
     <div class="features">
-        <h2>Built for the rep. Not the company.</h2>
+        <h2>Stay organized. Stay sharp. Stay ahead.</h2>
         <div class="feature-grid">
             <div class="feature-card">
                 <div class="shot-stage"><img class="feature-shot" src="/assets/features/agenda.jpg"
@@ -453,6 +459,18 @@
             twq("event", RK_X_EVENT_ID, { contents: [{ content_name: store }] });
         }
     });
+</script>
+<script>
+    // One primary CTA per visitor: fill and front the store button for the
+    // device they're holding. Desktop gets the web sign-up.
+    (function () {
+        var ua = navigator.userAgent || "";
+        var store = /iPhone|iPad|iPod/.test(ua) ? "ios" : /Android/.test(ua) ? "android" : "web";
+        var el = document.querySelector('.badge-row .badge[data-store="' + store + '"]');
+        if (!el) return;
+        el.classList.add("primary");
+        el.parentNode.insertBefore(el, el.parentNode.firstChild);
+    })();
 </script>
 </body>
 </html>
