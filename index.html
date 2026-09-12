@@ -75,7 +75,10 @@
         /* The free-trial hook gets its own line beneath the pitch and reads as
            the lead-in to the store buttons, hence the trailing colon. */
         .trial-cta { display: block; margin-top: 16px; color: #E8E6E6; font-weight: 600; }
-        .hero .pitch { color: #fff; font-weight: 600; }
+        .hero .pitch { display: block; margin-top: 14px; color: #fff; font-weight: 600; }
+        /* Feature captions lead with the ad hook (bold, white), then the
+           one-line explainer in the caption gray. */
+        .feature-card p strong { color: #fff; font-weight: 600; }
         /* The badge matching the visitor's platform is filled, not outlined. */
         .badge.primary { background: #F4434E; color: #fff; font-weight: 600; }
         a.badge.primary:hover { background: #ff5963; }
@@ -200,7 +203,7 @@
     <div class="hero">
         <div class="wordmark">RepKit</div>
         <p class="slogan">The Sales Rep's Edge</p>
-        <p><span class="pitch">Built for the rep. Not the company.</span><span class="trial-cta">Start free today:</span></p>
+        <p>RepKit is the all-in-one productivity app designed exclusively for sales professionals.<span class="pitch">Built for the rep. Not the company.</span><span class="trial-cta">Start free today:</span></p>
         <!-- The visitor's own platform gets the filled button and first slot
              (JS at the bottom of the page); the other two stay as outlines. -->
         <div class="badge-row">
@@ -235,44 +238,44 @@
                 <div class="shot-stage"><img class="feature-shot" src="/assets/features/agenda.jpg"
                      alt="Daily Agenda & Progress in RepKit" loading="lazy"></div>
                 <h3>Daily Agenda & Progress</h3>
-                <p>Set your daily goals and track progress in real time. See your day at a glance and stay on pace.</p>
+                <p><strong>Tell it your day and it builds your agenda.</strong> Goals and to-dos, tracked in real time.</p>
             </div>
             <div class="feature-card">
                 <div class="shot-stage"><img class="feature-shot" src="/assets/features/prep.jpg"
                      alt="AI Meeting Prep in RepKit" loading="lazy"></div>
                 <h3>AI Meeting Prep</h3>
-                <p>Research accounts, brainstorm discovery questions, and walk into every call ready — personalized to how you sell.</p>
+                <p><strong>Never walk in cold again.</strong> Account research and discovery questions, ready before the call — personalized to how you sell.</p>
             </div>
             <div class="feature-card">
                 <div class="shot-stage"><img class="feature-shot" src="/assets/features/memory.jpg"
                      alt="Post-call notes in RepKit feeding the next AI prep" loading="lazy"></div>
                 <h3>Prep That Compounds</h3>
-                <p>Your post-call notes and sales philosophy feed the next prep — the AI learns your accounts and how you sell, call after call.</p>
+                <p><strong>Every call makes the next prep sharper.</strong> Your notes feed the AI — it learns your accounts and how you sell.</p>
             </div>
             <div class="feature-card">
                 <div class="shot-stage"><img class="feature-shot" src="/assets/features/agent.jpg"
                      alt="AI Agent in RepKit" loading="lazy"></div>
                 <h3>AI Agent</h3>
-                <p>Log notes by voice or text, get instant answers, and automate the busywork that slows you down.</p>
+                <p><strong>Log a call by voice.</strong> Pains, next steps, and answers on the spot — no CRM busywork.</p>
             </div>
             <div class="feature-card">
                 <div class="shot-stage"><img class="feature-shot" src="/assets/features/wisdom.jpg"
                      alt="Philosophy & Mindset in RepKit" loading="lazy"></div>
                 <h3>Philosophy & Mindset</h3>
-                <p>Sharpen your sales edge with curated frameworks, motivation, and daily quotes.</p>
+                <p><strong>Stay sharp between calls.</strong> Frameworks, motivation, and quotes worth saving.</p>
             </div>
             <div class="feature-card">
                 <div class="shot-stage"><img class="feature-shot" src="/assets/features/career.jpg"
                      alt="Career Hub in RepKit" loading="lazy"></div>
                 <h3>Career Hub</h3>
-                <p>Track your job pipeline, history, and professional growth — all in one place.</p>
+                <p><strong>Your career, not your company's.</strong> Job pipeline, history, and comp — yours to keep.</p>
             </div>
             <div class="feature-card">
                 <img class="wide-shot" src="/assets/features/pipeline-web.jpg"
                      alt="Pipeline and commission tracking in the RepKit web app"
                      loading="lazy" width="1600" height="831">
                 <h3>Pipeline &amp; Commission</h3>
-                <p>Track pipeline health and see exactly what each deal pays you. No dashboards for managers, no CRM busywork.</p>
+                <p><strong>See what every deal pays you.</strong> Pipeline, quota, and commission — no dashboards for managers.</p>
             </div>
         </div>
     </div>
