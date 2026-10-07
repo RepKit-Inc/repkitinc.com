@@ -39,7 +39,7 @@
         !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
         twq('config','rdz1n');
     </script>
-    <meta name="description" content="The AI app for individual B2B sales reps. Meeting prep, pipeline and commission, daily goals, career — built for the rep, not the company. AI-powered meeting prep, daily agenda tracking, and career management.">
+    <meta name="description" content="The AI app for individual B2B sales reps. Call-sheet meeting prep, account targeting, pipeline and commission, daily habits, career — built for the rep, not the company. AI-powered meeting prep, daily agenda tracking, and career management.">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -115,6 +115,9 @@
         .features h2 { color: #fff; text-align: center; font-size: 1.6rem; margin-bottom: 40px; }
         .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
         .feature-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+        .feature-card.wide { grid-column: 1 / -1; }
+        .pro-tag { display: inline-block; vertical-align: middle; margin-left: 8px; padding: 2px 8px; border-radius: 6px;
+            background: rgba(244,67,78,0.18); color: #f4434e; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
         /* Wide web-app capture inside a feature card — same treatment as the
            showcase image below, not the phone-shot glow stage. */
         .feature-card .wide-shot { width: 100%; height: auto; display: block; border-radius: 8px;
@@ -237,15 +240,15 @@
         <div class="feature-grid">
             <div class="feature-card">
                 <div class="shot-stage"><img class="feature-shot" src="/assets/features/agenda.jpg"
-                     alt="Daily Agenda & Progress in RepKit" loading="lazy"></div>
-                <h3>Daily Agenda & Progress</h3>
-                <p><strong>Build the habits that hit quota.</strong> Daily goals and to-dos, tracked over time.</p>
+                     alt="Daily Habits in RepKit: three habits tracked on one calendar" loading="lazy"></div>
+                <h3>Daily Habits</h3>
+                <p><strong>Three habits a day, tracked on one calendar.</strong> Tap when it's done. See the month at a glance, with your to-dos underneath.</p>
             </div>
             <div class="feature-card">
                 <div class="shot-stage"><img class="feature-shot" src="/assets/features/prep.jpg"
-                     alt="AI Meeting Prep in RepKit" loading="lazy"></div>
-                <h3>AI Meeting Prep</h3>
-                <p><strong>Never show up cold again.</strong> Account research and discovery questions, ready before the meeting — personalized to how you sell.</p>
+                     alt="A RepKit call sheet: the read, last time, discovery targets, watch-outs" loading="lazy"></div>
+                <h3>The Call Sheet</h3>
+                <p><strong>Never show up cold again.</strong> One tap builds a one-page call sheet from your notes, your pipeline and the web: what happened last time, what to ask, what to watch out for.</p>
             </div>
             <div class="feature-card">
                 <div class="shot-stage"><img class="feature-shot" src="/assets/features/memory.jpg"
@@ -271,7 +274,14 @@
                 <h3>Career Hub</h3>
                 <p><strong>Your career, not your company's.</strong> Job pipeline, work history, and career earnings — yours to keep.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card wide">
+                <img class="wide-shot" src="/assets/features/targeting-web.jpg"
+                     alt="Account Targeting in the RepKit web app: watched accounts and industries with weekly AI briefs"
+                     loading="lazy" width="1600" height="815">
+                <h3>Account Targeting <span class="pro-tag">Pro</span></h3>
+                <p><strong>Your accounts, watched for you.</strong> Name the companies and industries you care about. Every week RepKit reads the web and tells you what changed, why it matters, and how to use it.</p>
+            </div>
+            <div class="feature-card wide">
                 <img class="wide-shot" src="/assets/features/pipeline-web.jpg"
                      alt="Pipeline and commission tracking in the RepKit web app"
                      loading="lazy" width="1600" height="831">
@@ -284,7 +294,7 @@
     <div class="showcase">
         <div class="showcase-card">
             <img src="/assets/features/dashboard.jpg"
-                 alt="RepKit web dashboard: quota forecast, daily agenda, and recent meetings"
+                 alt="RepKit web dashboard: quota forecast, daily habits, and recent meetings"
                  loading="lazy" width="1600" height="822">
             <h3>Dashboard</h3>
             <p>Your command center &mdash; on the web, synced with the app.</p>
