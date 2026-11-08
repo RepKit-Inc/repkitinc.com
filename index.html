@@ -102,7 +102,12 @@
         .video-stage { display: flex; align-items: center; justify-content: center; gap: 18px; }
         .video-wrap { position: relative; width: 100%; max-width: 440px; border-radius: 24px; overflow: hidden; border: 1px solid #2a2b35;
             box-shadow: 0 0 0 1px rgba(244,67,78,0.10), 0 30px 80px rgba(244,67,78,0.12), 0 20px 60px rgba(0,0,0,0.6); background: #0f1016; }
-        .video-wrap video { display: block; width: 100%; height: auto; }
+        /* The wrap morphs between the two aspects (JS sets the pixel height
+           from the target width so width and height ease together). */
+        .video-wrap { aspect-ratio: 9 / 16; transition: max-width 0.6s cubic-bezier(0.16, 1, 0.3, 1), height 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .video-wrap.wide { max-width: 760px; aspect-ratio: 16 / 9; }
+        .video-wrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.35s ease; }
+        .video-wrap video.on { opacity: 1; }
         .vid-arrow { flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%; cursor: pointer;
             background: #1a1b23; border: 1.5px solid #F4434E; color: #F4434E; font-size: 1.8rem; line-height: 1;
             display: flex; align-items: center; justify-content: center; padding: 0 0 4px 0;
@@ -241,16 +246,22 @@
 
     <div class="video-section">
         <div class="video-stage">
-            <div class="video-wrap">
-                <!-- poster: without it, this 779px-tall element is a blank
-                     black box until the video decodes — and stays blank if
-                     autoplay is blocked (Low Power Mode, data saver, reduced
-                     motion). The frame chosen is the AI prep screen, so the
-                     fallback still shows the product doing its main job. -->
-                <video class="hero-video" src="/assets/hero.mp4"
-                       poster="/assets/hero-poster.jpg"
-                       autoplay muted loop playsinline preload="auto"
-                       aria-label="RepKit product montage"></video>
+            <!-- Two cuts of the montage play back to back: the phone cut in
+                 a 9:16 frame, then the web-app cut while the frame widens to
+                 16:9, then back. Both open and close on plain background so
+                 the swaps land dark-on-dark. JS at the bottom drives it;
+                 without JS the phone cut just plays. Posters keep the slot
+                 from being a black box before decode / when autoplay is
+                 blocked (Low Power Mode, data saver, reduced motion). -->
+            <div class="video-wrap" id="heroWrap">
+                <video class="hero-video on" id="heroPhone" src="/assets/hero-phone.mp4"
+                       poster="/assets/hero-phone-poster.jpg"
+                       autoplay muted playsinline preload="auto"
+                       aria-label="RepKit product montage — phone"></video>
+                <video class="hero-video" id="heroWeb" src="/assets/hero-web.mp4"
+                       poster="/assets/hero-web-poster.jpg"
+                       muted playsinline preload="auto"
+                       aria-label="RepKit product montage — web app"></video>
             </div>
         </div>
     </div>
@@ -520,6 +531,35 @@
         if (!el) return;
         el.classList.add("primary");
         el.parentNode.insertBefore(el, el.parentNode.firstChild);
+    })();
+</script>
+<script>
+    // Hero: phone cut (9:16) -> web cut (16:9, frame widens) -> repeat.
+    (function () {
+        var wrap = document.getElementById('heroWrap');
+        var phone = document.getElementById('heroPhone');
+        var web = document.getElementById('heroWeb');
+        if (!wrap || !phone || !web) return;
+        var MAXW = { phone: 440, web: 760 }, RATIO = { phone: 1920 / 1080, web: 1080 / 1920 };
+        var mode = 'phone';
+        function size() {
+            var box = wrap.parentElement.getBoundingClientRect().width;
+            var w = Math.min(box, MAXW[mode]);
+            wrap.style.height = Math.round(w * RATIO[mode]) + 'px';
+        }
+        function show(next) {
+            mode = next;
+            wrap.classList.toggle('wide', next === 'web');
+            size();
+            var on = next === 'web' ? web : phone, off = next === 'web' ? phone : web;
+            on.currentTime = 0;
+            on.classList.add('on'); off.classList.remove('on');
+            var p = on.play(); if (p && p.catch) p.catch(function () {});
+        }
+        phone.addEventListener('ended', function () { show('web'); });
+        web.addEventListener('ended', function () { show('phone'); });
+        window.addEventListener('resize', size);
+        size();
     })();
 </script>
 </body>
