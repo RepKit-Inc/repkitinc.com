@@ -50,7 +50,7 @@
         !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
         twq('config','rdz1n');
     </script>
-    <meta name="description" content="The AI app for individual B2B sales reps. Call-sheet meeting prep, account targeting, pipeline and commission, daily habits, career — built for the rep, not the company. AI-powered meeting prep, daily agenda tracking, and career management.">
+    <meta name="description" content="The AI app for individual B2B sales reps. Call-sheet meeting prep, targeting &amp; following, pipeline and commission, daily habits, career — built for the rep, not the company. AI-powered meeting prep, daily agenda tracking, and career management.">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -127,6 +127,8 @@
         .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
         .feature-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
         .feature-card.wide { grid-column: 1 / -1; }
+        .pro-tag { display: inline-block; vertical-align: middle; margin-left: 8px; padding: 2px 8px; border-radius: 6px;
+            background: rgba(244,67,78,0.18); color: #f4434e; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
         /* Wide web-app capture inside a feature card — same treatment as the
            showcase image below, not the phone-shot glow stage. */
         .feature-card .wide-shot { width: 100%; height: auto; display: block; border-radius: 8px;
@@ -285,10 +287,10 @@
             </div>
             <div class="feature-card wide">
                 <img class="wide-shot" src="/assets/features/targeting-web.jpg"
-                     alt="Account Targeting in the RepKit web app: watched accounts and industries with weekly AI briefs"
+                     alt="Targeting & Following in the RepKit web app: watched accounts, industries and people with weekly AI briefs"
                      loading="lazy" width="1600" height="824">
-                <h3>Account Targeting</h3>
-                <p><strong>Your accounts, watched for you.</strong> Name the companies and industries you care about. Every week RepKit reads the web and tells you what changed, why it matters, and how to use it.</p>
+                <h3>Targeting &amp; Following <span class="pro-tag">Pro</span></h3>
+                <p><strong>Watched for you, every week.</strong> Name the companies and industries you care about and RepKit tells you what changed, why it matters, and how to use it. Follow the people you learn from and get what they said this week — the exact lines — ready to save to your quotes.</p>
             </div>
             <div class="feature-card wide">
                 <img class="wide-shot" src="/assets/features/pipeline-web.jpg"
@@ -344,7 +346,7 @@
                 <ul>
                     <li>Pipeline &amp; commission tracking</li>
                     <li>Full AI prep &amp; chat usage</li>
-                    <li>Account Targeting: weekly AI briefs on your accounts</li>
+                    <li>Targeting &amp; Following: weekly briefs on your accounts and the people you learn from</li>
                     <li>Meeting history past 30 days</li>
                     <li>Weekly pipeline recap</li>
                     <li>Assistant that learns &amp; compounds call over call</li>
