@@ -104,7 +104,7 @@
             box-shadow: 0 0 0 1px rgba(244,67,78,0.10), 0 30px 80px rgba(244,67,78,0.12), 0 20px 60px rgba(0,0,0,0.6); background: #0f1016; }
         /* The wrap morphs between the two aspects (JS sets the pixel height
            from the target width so width and height ease together). */
-        .video-wrap { aspect-ratio: 9 / 16; transition: max-width 0.6s cubic-bezier(0.16, 1, 0.3, 1), height 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .video-wrap { aspect-ratio: 9 / 16; transition: max-width 0.9s cubic-bezier(0.16, 1, 0.3, 1), height 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
         .video-wrap.wide { max-width: 760px; aspect-ratio: 16 / 9; }
         .video-wrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.35s ease; }
         .video-wrap video.on { opacity: 1; }
@@ -535,29 +535,41 @@
 </script>
 <script>
     // Hero: phone cut (9:16) -> web cut (16:9, frame widens) -> repeat.
+    // The stage keeps the phone cut's height the whole time, so the page never
+    // shifts; only the frame morphs, and it morphs while both cuts are on their
+    // dark opening/closing frames. Small screens just loop the phone cut.
     (function () {
         var wrap = document.getElementById('heroWrap');
         var phone = document.getElementById('heroPhone');
         var web = document.getElementById('heroWeb');
         if (!wrap || !phone || !web) return;
+        var stage = wrap.parentElement;
         var MAXW = { phone: 440, web: 760 }, RATIO = { phone: 1920 / 1080, web: 1080 / 1920 };
+        var MORPH_MS = 900;
         var mode = 'phone';
+        var small = function () { return window.innerWidth < 700; };
         function size() {
-            var box = wrap.parentElement.getBoundingClientRect().width;
+            var box = stage.getBoundingClientRect().width;
+            stage.style.height = Math.round(Math.min(box, MAXW.phone) * RATIO.phone) + 'px';
             var w = Math.min(box, MAXW[mode]);
             wrap.style.height = Math.round(w * RATIO[mode]) + 'px';
         }
         function show(next) {
+            var on = next === 'web' ? web : phone, off = next === 'web' ? phone : web;
+            off.pause();
+            on.currentTime = 0;               // both cuts open on a dark frame
+            on.classList.add('on'); off.classList.remove('on');
             mode = next;
             wrap.classList.toggle('wide', next === 'web');
-            size();
-            var on = next === 'web' ? web : phone, off = next === 'web' ? phone : web;
-            on.currentTime = 0;
-            on.classList.add('on'); off.classList.remove('on');
-            off.pause();
-            var p = on.play(); if (p && p.catch) p.catch(function () {});
+            size();                           // morph the dark frame…
+            setTimeout(function () {          // …then let the next cut fade in
+                var p = on.play(); if (p && p.catch) p.catch(function () {});
+            }, MORPH_MS);
         }
-        phone.addEventListener('ended', function () { show('web'); });
+        phone.addEventListener('ended', function () {
+            if (small()) { phone.currentTime = 0; phone.play(); return; }
+            show('web');
+        });
         web.addEventListener('ended', function () { show('phone'); });
         window.addEventListener('resize', size);
         size();
