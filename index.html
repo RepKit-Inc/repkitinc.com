@@ -554,6 +554,7 @@
             var on = next === 'web' ? web : phone, off = next === 'web' ? phone : web;
             on.currentTime = 0;
             on.classList.add('on'); off.classList.remove('on');
+            off.pause();
             var p = on.play(); if (p && p.catch) p.catch(function () {});
         }
         phone.addEventListener('ended', function () { show('web'); });
