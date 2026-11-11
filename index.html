@@ -108,7 +108,9 @@
         /* Hero only: the frame morphs between the phone and web cuts. Scoped to
            #heroWrap so the video carousel below keeps the plain rule above. */
         #heroWrap { aspect-ratio: 9 / 16; transition: max-width 0.9s cubic-bezier(0.16, 1, 0.3, 1), height 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
-        #heroWrap.wide { max-width: 760px; aspect-ratio: 16 / 9; }
+        #heroWrap.wide { max-width: 1100px; aspect-ratio: 16 / 10; }
+        /* Only the hero widens; the launch-film carousel keeps the 760px column. */
+        .video-section.hero-stage { max-width: 1148px; }
         #heroWrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.35s ease; }
         #heroWrap video.on { opacity: 1; }
         .vid-arrow { flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%; cursor: pointer;
@@ -247,7 +249,7 @@
         </div>
     </div>
 
-    <div class="video-section">
+    <div class="video-section hero-stage">
         <div class="video-stage">
             <!-- Two cuts of the montage play back to back: the phone cut in
                  a 9:16 frame, then the web-app cut while the frame widens to
@@ -547,7 +549,7 @@
         var web = document.getElementById('heroWeb');
         if (!wrap || !phone || !web) return;
         var stage = wrap.parentElement;
-        var MAXW = { phone: 440, web: 760 }, RATIO = { phone: 1920 / 1080, web: 1080 / 1920 };
+        var MAXW = { phone: 440, web: 1100 }, RATIO = { phone: 1920 / 1080, web: 1200 / 1920 };
         var MORPH_MS = 900;
         var mode = 'phone';
         var small = function () { return window.innerWidth < 700; };
