@@ -178,6 +178,21 @@
         .duo .front { left: 0; bottom: 0; z-index: 2; }
         .duo .back { right: 0; top: 0; }
         .hl-media.shot { width: min(300px, 72%); }
+        /* Memory: what it knows about you, as cards (a drawn explainer, not a screenshot) */
+        .hl-media.mem { align-self: center; justify-self: stretch; width: auto; margin: 0; padding: 0 clamp(24px, 4.4vw, 60px) 0 0;
+            display: flex; flex-direction: column; gap: 12px; }
+        .mem-chip { background: #1F2128; border: 1px solid #2A2B35; border-radius: 16px; padding: 13px 18px 14px; color: #fff; font-weight: 600;
+            font-size: clamp(14px, 1.25vw, 17px); line-height: 1.3; letter-spacing: -0.01em; max-width: 25em;
+            opacity: 0; transform: translateY(14px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+        .mem-chip small { display: block; color: var(--red); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+        .mem-chip:nth-child(2) { margin-left: 7%; } .mem-chip:nth-child(3) { margin-left: 2%; }
+        .mem-chip:nth-child(4) { margin-left: 9%; } .mem-chip:nth-child(5) { margin-left: 4%; }
+        .mem-out { color: var(--tx3); font-size: 15px; font-weight: 600; margin: 6px 0 0 4%; opacity: 0; transition: opacity 0.7s ease; }
+        .hl-slide.on .mem-chip { opacity: 1; transform: none; }
+        .hl-slide.on .mem-chip:nth-child(1) { transition-delay: 0.3s; } .hl-slide.on .mem-chip:nth-child(2) { transition-delay: 1s; }
+        .hl-slide.on .mem-chip:nth-child(3) { transition-delay: 1.7s; } .hl-slide.on .mem-chip:nth-child(4) { transition-delay: 2.4s; }
+        .hl-slide.on .mem-chip:nth-child(5) { transition-delay: 3.1s; }
+        .hl-slide.on .mem-out { opacity: 1; transition-delay: 4s; }
         .on-narrow { display: none; }
         @media (max-width: 760px) { .stage .on-wide { display: none; } .stage .on-narrow { display: block; }
             .stage.wide .media.on-narrow { width: min(280px, 64%); margin: 40px auto 48px; } }
@@ -214,7 +229,7 @@
             transition: width 0.4s var(--ease), background 0.3s ease; }
         .hl-dot.on { width: 46px; background: #4A4D58; }
         .hl-dot i { position: absolute; inset: 0; background: #fff; transform-origin: left center; transform: scaleX(0); border-radius: inherit; }
-        .hl-dot.on i { animation: hlfill 7s linear forwards; }
+        .hl-dot.on i { animation: hlfill var(--dwell, 9s) linear forwards; }
         .hl:not(.run) .hl-dot.on i { animation-play-state: paused; }
         @keyframes hlfill { to { transform: scaleX(1); } }
         .hl-nav .pp { position: static; width: 48px; height: 48px; background: var(--s3); }
@@ -393,6 +408,9 @@
             .hl { --slide: 86vw; }
             .hl-slide, .hl-slide.wide { grid-template-columns: 1fr; grid-template-rows: auto 1fr; height: 600px; }
             .hl-media { width: min(230px, 62%); margin-top: 26px; }
+            .hl-media.mem { padding: 0 22px 22px; gap: 9px; align-self: end; }
+            .mem-chip { padding: 10px 14px 11px; }
+            .mem-chip:nth-child(5) { display: none; }
             .hl-slide.wide .hl-media { width: 150%; justify-self: start; margin-left: 28px; margin-top: 30px; }
             .tile.has-peek { min-height: 0; padding-bottom: 0; }
             .tile.has-peek .txt { max-width: none; }
@@ -412,6 +430,7 @@
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             .js .rv { opacity: 1; transform: none; transition: none; }
+            .mem-chip, .mem-out { opacity: 1; transform: none; transition: none; }
             dialog.sheet[open] .sheet-in { animation: none; }
         }
     </style>
@@ -503,36 +522,47 @@
             </div>
         </div>
         <div class="hl-track" tabindex="0" aria-label="Highlights">
-            <article class="hl-slide on">
+            <article class="hl-slide on" data-dwell="14.5">
                 <div class="hl-cap"><p><span class="tag">The Call Sheet</span>Never show up cold again. <span>One tap builds prep for the account in front of you.</span></p></div>
-                <div class="hl-media phone"><video muted playsinline loop preload="none" poster="/assets/clips/callsheet.jpg" src="/assets/clips/callsheet.mp4"></video></div>
+                <div class="hl-media phone"><video muted playsinline preload="none" poster="/assets/clips/callsheet.jpg" src="/assets/clips/callsheet.mp4"></video></div>
             </article>
-            <article class="hl-slide">
+            <article class="hl-slide" data-dwell="10">
                 <div class="hl-cap"><p><span class="tag">Memory</span>It learns how you work. <span>Every call sheet fits you better than the last.</span></p></div>
-                <div class="hl-media phone shot"><img src="/assets/shots/memory.jpg" alt="What you sell in RepKit" loading="lazy"></div>
+                <div class="hl-media mem" aria-label="Examples of what RepKit remembers">
+                    <div class="mem-chip"><small>What you sell</small>Supplier-management software for aerospace and defense</div>
+                    <div class="mem-chip"><small>Who buys</small>VP Supply Chain or Director of Procurement</div>
+                    <div class="mem-chip"><small>How you sell</small>Discovery on late-part pain, then a scoped pilot</div>
+                    <div class="mem-chip"><small>What you believe</small>Show the one thing they told you hurts. Skip the tour.</div>
+                    <div class="mem-chip"><small>Last time at SpaceX</small>Elena championed the deal after discovery</div>
+                    <p class="mem-out">All of it goes into your next call sheet.</p>
+                </div>
             </article>
-            <article class="hl-slide">
+            <article class="hl-slide" data-dwell="15">
                 <div class="hl-cap"><p><span class="tag">RepKit Agent</span>No manual data entry. <span>Ask the Agent and it's done, anywhere in the app.</span></p></div>
-                <div class="hl-media phone"><video muted playsinline loop preload="none" poster="/assets/clips/agent.jpg" src="/assets/clips/agent.mp4"></video></div>
+                <div class="hl-media phone"><video muted playsinline preload="none" poster="/assets/clips/agent.jpg" src="/assets/clips/agent.mp4"></video></div>
             </article>
-            <article class="hl-slide wide">
+            <article class="hl-slide wide" data-dwell="9">
                 <div class="hl-cap"><p><span class="tag">Pipeline &amp; Commission</span>See what every deal pays you. <span>Pipeline, quota and commission in one view.</span></p></div>
-                <div class="hl-media browser"><video muted playsinline loop preload="none" poster="/assets/clips/web-pipeline.jpg" src="/assets/clips/web-pipeline.mp4"></video></div>
+                <div class="hl-media browser"><video muted playsinline preload="none" poster="/assets/clips/web-pipeline.jpg" src="/assets/clips/web-pipeline.mp4"></video></div>
             </article>
-            <article class="hl-slide">
+            <article class="hl-slide" data-dwell="8">
                 <div class="hl-cap"><p><span class="tag">Daily Habits &amp; To-Dos</span>Get a little better every day. <span>Three habits and a plan for the day.</span></p></div>
-                <div class="hl-media phone"><video muted playsinline loop preload="none" poster="/assets/clips/habits.jpg" src="/assets/clips/habits.mp4"></video></div>
+                <div class="hl-media phone"><video muted playsinline preload="none" poster="/assets/clips/habits.jpg" src="/assets/clips/habits.mp4"></video></div>
             </article>
-            <article class="hl-slide">
-                <div class="hl-cap"><p><span class="tag">Targeting &amp; Following</span>Your accounts, industries and people, watched for you. <span>What changed, and what they said.</span></p></div>
-                <div class="hl-media phone"><video muted playsinline loop preload="none" poster="/assets/clips/targeting.jpg" src="/assets/clips/targeting.mp4"></video></div>
+            <article class="hl-slide" data-dwell="11.5">
+                <div class="hl-cap"><p><span class="tag">Targeting</span>Your accounts and industries, watched for you. <span>What changed, why it matters, how to use it.</span></p></div>
+                <div class="hl-media phone"><video muted playsinline preload="none" poster="/assets/clips/targeting.jpg" src="/assets/clips/targeting.mp4"></video></div>
             </article>
-            <article class="hl-slide">
+            <article class="hl-slide" data-dwell="9">
+                <div class="hl-cap"><p><span class="tag">Following</span>Follow the people you learn from. <span>What they said this week, in their exact words.</span></p></div>
+                <div class="hl-media phone shot"><img src="/assets/shots/following.jpg" alt="Following in RepKit: Chris Orlob and Naval Ravikant" loading="lazy"></div>
+            </article>
+            <article class="hl-slide" data-dwell="9">
                 <div class="hl-cap"><p><span class="tag">Career Hub</span>Your whole career, one record. <span>Every role you've held and what it paid.</span></p></div>
                 <div class="hl-media phone shot"><img src="/assets/shots/career-earnings.jpg" alt="Career history and earnings trend in RepKit" loading="lazy"></div>
             </article>
-            <article class="hl-slide">
-                <div class="hl-cap"><p><span class="tag">Job Opportunities</span>Always be interviewing. <span>Qualified roles, found for you.</span></p></div>
+            <article class="hl-slide" data-dwell="9.5">
+                <div class="hl-cap"><p><span class="tag">Job Opportunities</span>Always be interviewing. <span>Curate a pipeline of job opportunities, with qualified roles found for you.</span></p></div>
                 <div class="hl-media phone shot"><img src="/assets/shots/find-roles.jpg" alt="Find roles in RepKit" loading="lazy"></div>
             </article>
         </div>
@@ -1124,6 +1154,7 @@
     // v._gate extra condition (the highlights reel only plays its active slide)
     function sync(v) {
         var ok = v._in && !v._user && v._gate !== false && !document.hidden;
+        if (ok && v._once && v.ended) return;          // reel clips hold on their last frame
         if (ok) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
         else if (!v.paused) v.pause();
     }
@@ -1153,12 +1184,15 @@
         var hl = $("#highlights"); if (!hl) return;
         var track = $(".hl-track", hl), slides = $$(".hl-slide", hl), dotsWrap = $(".hl-dots", hl), pp = $(".hl-pp", hl);
         var n = slides.length, idx = 0, playing = !reduce, vis = false, raf = 0;
-        var vids = slides.map(function (s) { return $("video", s); });
+        // Each clip plays once and holds on its last frame, and each slide
+        // stays up for its own data-dwell seconds, so nothing loops mid-slide.
+        var vids = slides.map(function (s) { var v = $("video", s); if (v) v._once = true; return v; });
         var dots = slides.map(function (s, i) {
             var d = document.createElement("button");
             d.className = "hl-dot" + (i === 0 ? " on" : "");
             d.setAttribute("role", "tab");
             d.setAttribute("aria-label", ($(".tag", s) || {}).textContent || ("Highlight " + (i + 1)));
+            d.style.setProperty("--dwell", (parseFloat(s.getAttribute("data-dwell")) || 9) + "s");
             d.appendChild(document.createElement("i"));
             d.addEventListener("click", function () { go(i); });
             d.firstChild.addEventListener("animationend", function () { if (i === idx) go(idx + 1); });
@@ -1181,6 +1215,7 @@
                 d.classList.toggle("on", k === i);
                 d.setAttribute("aria-selected", k === i ? "true" : "false");
             });
+            if (vids[i]) { try { vids[i].currentTime = 0; } catch (e) {} }   // play it from the top
             var f = dots[i].firstChild;         // restart the progress fill
             f.style.animation = "none"; void f.offsetWidth; f.style.animation = "";
             gate();
