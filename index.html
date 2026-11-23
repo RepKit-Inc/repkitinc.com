@@ -412,7 +412,8 @@
             .hl-media.mem { padding: 0 22px 22px; gap: 9px; align-self: end; }
             .mem-chip { padding: 10px 14px 11px; }
             .mem-chip:nth-child(5) { display: none; }
-            .hl-slide.wide .hl-media { width: 150%; justify-self: start; margin-left: 28px; margin-top: 30px; }
+            .hl-slide .on-wide { display: none; } .hl-slide .on-narrow { display: block; }
+            .hl-slide.wide .hl-media { width: min(230px, 62%); margin-top: 26px; }
             .tile.has-peek { min-height: 0; padding-bottom: 0; }
             .tile.has-peek .txt { max-width: none; }
             .tile .peek { position: relative; right: auto; top: auto; width: min(240px, 66%); margin: 30px auto -34%; }
@@ -531,8 +532,8 @@
                 <div class="hl-media mem" aria-label="Examples of what RepKit remembers">
                     <div class="mem-chip"><small>What you sell</small>Supplier-management software for aerospace and defense</div>
                     <div class="mem-chip"><small>Who buys</small>VP Supply Chain or Director of Procurement</div>
-                    <div class="mem-chip"><small>How you sell</small>Discovery on late-part pain, then a scoped pilot</div>
-                    <div class="mem-chip"><small>What you believe</small>Show the one thing they told you hurts. Skip the tour.</div>
+                    <div class="mem-chip"><small>How you sell</small>SPIN selling. Questions first, pitch last.</div>
+                    <div class="mem-chip"><small>What you believe</small>Sell the pain, not the features.</div>
                     <div class="mem-chip"><small>Last time at SpaceX</small>Elena championed the deal after discovery</div>
                     <p class="mem-out">All of it goes into your next call sheet.</p>
                 </div>
@@ -543,9 +544,10 @@
             </article>
             <article class="hl-slide wide" data-dwell="10">
                 <div class="hl-cap"><p><span class="tag">Pipeline &amp; Commission</span>See what every deal pays you. <span>Pipeline, quota and commission in one view.</span></p></div>
-                <div class="hl-media browser"><video muted playsinline preload="none" poster="/assets/clips/web-pipeline.jpg" src="/assets/clips/web-pipeline.mp4"></video></div>
+                <div class="hl-media browser on-wide"><video muted playsinline preload="none" poster="/assets/clips/web-pipeline.jpg" src="/assets/clips/web-pipeline.mp4"></video></div>
+                <div class="hl-media phone on-narrow"><video muted playsinline preload="none" poster="/assets/clips/pipeline.jpg" src="/assets/clips/pipeline.mp4"></video></div>
             </article>
-            <article class="hl-slide" data-dwell="11.5">
+            <article class="hl-slide" data-dwell="14">
                 <div class="hl-cap"><p><span class="tag">Daily Habits &amp; To-Dos</span>Get a little better every day. <span>Three habits and a plan for the day.</span></p></div>
                 <div class="hl-media phone shot"><video muted playsinline preload="none" poster="/assets/clips/habits-day.jpg" src="/assets/clips/habits-day.mp4"></video></div>
             </article>
@@ -553,13 +555,13 @@
                 <div class="hl-cap"><p><span class="tag">Targeting</span>Your accounts and industries, watched for you. <span>What changed, why it matters, how to use it.</span></p></div>
                 <div class="hl-media phone"><video muted playsinline preload="none" poster="/assets/clips/targeting.jpg" src="/assets/clips/targeting.mp4"></video></div>
             </article>
-            <article class="hl-slide" data-dwell="11">
+            <article class="hl-slide" data-dwell="12">
                 <div class="hl-cap"><p><span class="tag">Following</span>Follow the people you learn from. <span>What they said this week, in their exact words.</span></p></div>
                 <div class="hl-media phone shot"><video muted playsinline preload="none" poster="/assets/clips/following.jpg" src="/assets/clips/following.mp4"></video></div>
             </article>
-            <article class="hl-slide" data-dwell="9">
-                <div class="hl-cap"><p><span class="tag">Career Hub</span>Your whole career, one record. <span>Every role you've held and what it paid.</span></p></div>
-                <div class="hl-media phone shot"><img src="/assets/shots/career-earnings.jpg" alt="Career history and earnings trend in RepKit" loading="lazy"></div>
+            <article class="hl-slide" data-dwell="11.5">
+                <div class="hl-cap"><p><span class="tag">Career Hub</span>Your whole career, one record. <span>Your numbers and wins, kept and ready for your next resume.</span></p></div>
+                <div class="hl-media phone shot"><video muted playsinline preload="none" poster="/assets/clips/career-role.jpg" src="/assets/clips/career-role.mp4"></video></div>
             </article>
             <article class="hl-slide" data-dwell="9.5">
                 <div class="hl-cap"><p><span class="tag">Job Opportunities</span>Always be interviewing. <span>Curate a pipeline of job opportunities, with qualified roles found for you.</span></p></div>
@@ -578,10 +580,10 @@
     <section style="padding-top:96px">
         <div class="wrap">
             <div class="stats rv">
-                <div class="stat"><b>1<small>tap</small></b><span>to a call sheet for the account in front of you</span></div>
-                <div class="stat"><b>3<small>habits</small></b><span>a day, tracked on one calendar</span></div>
-                <div class="stat"><b>2<small>screens</small></b><span>phone and web, always in sync</span></div>
-                <div class="stat"><b>$0</b><span>to start. No card.</span></div>
+                <div class="stat"><b>1<small>tap</small></b><span>from an account name to a call sheet you can walk in with</span></div>
+                <div class="stat"><b>0<small>data entry</small></b><span>Tell the Agent. It logs the call, the deal and the to-do.</span></div>
+                <div class="stat"><b>100%<small>yours</small></b><span>Change jobs and your tools, workflows and career record stay with you.</span></div>
+                <div class="stat"><b>$0<small>to start</small></b><span>Free plan. No card needed.</span></div>
             </div>
         </div>
     </section>
@@ -718,7 +720,7 @@
                     <div class="copy">
                         <p class="eyebrow">Career Hub</p>
                         <h2>Your whole career, one record.</h2>
-                        <p class="lead">Every sales job you've held and what it paid, year by year. And a curated pipeline of job opportunities for what comes next. Always be interviewing.</p>
+                        <p class="lead">Every sales job you've held, with your numbers and your wins kept year by year, so your resume is already written when you need it. And a curated pipeline of job opportunities for what comes next. Always be interviewing.</p>
                         <div class="mores">
                             <button class="more" data-open="m-career"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>Your job experience</button>
                             <button class="more" data-open="m-jobs"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>Your job opportunities</button>
@@ -730,7 +732,7 @@
                     </div>
                 </div>
                 <div class="minis">
-                    <div class="mini rv"><svg class="icon"><use href="#i-trend"/></svg><h3>Job experience</h3><p>Every role, with your title, quota, attainment and W2 for each year. Lifetime stats and your earnings trend, added up for you.</p></div>
+                    <div class="mini rv"><svg class="icon"><use href="#i-trend"/></svg><h3>Job experience</h3><p>Every role, with your quota, attainment and W2 for each year, plus the wins and awards behind them. The raw material for your resume, kept as you go.</p></div>
                     <div class="mini rv"><svg class="icon"><use href="#i-brief"/></svg><h3>Job opportunities pipeline</h3><p>Curate a pipeline of job opportunities and track each one like a deal: serious, promising, exploratory.</p></div>
                     <div class="mini rv"><svg class="icon"><use href="#i-search"/></svg><h3>Find roles</h3><p>Qualified open roles at companies that sell to your buyers, matched to your level. Add one in a tap.</p></div>
                 </div>
@@ -1005,12 +1007,12 @@
             <button class="x" aria-label="Close"><svg viewBox="0 0 24 24"><use href="#i-x"/></svg></button>
             <p class="eyebrow">Career Hub</p>
             <h2 id="m-career-h">Jobs change. Your record comes with you.</h2>
-            <p class="lead">Your numbers and your history, kept where no employer can switch them off.</p>
+            <p class="lead">Your numbers, your wins and your history, kept where no employer can switch them off.</p>
             <div class="cards">
                 <div class="card tall"><p><b>Earnings trend.</b> What each year paid, drawn as one line.</p><div class="phone shot"><img src="/assets/shots/career-earnings.jpg" alt="Career history and earnings trend in RepKit" loading="lazy"></div></div>
-                <div class="card"><p><b>Job experience.</b> Every role you've held, with your title, quota, attainment and W2 for each year.</p></div>
+                <div class="card"><p><b>Job experience.</b> Every role you've held, with your quota, attainment and W2 for each year.</p></div>
                 <div class="card"><p><b>Lifetime stats.</b> Lifetime W2, your best year and the years you've tracked, added up for you.</p></div>
-                <div class="card"><p><b>Your stories.</b> Keep the wins and the proof next to the numbers, ready for the next interview.</p></div>
+                <div class="card"><p><b>Resume-ready.</b> Key projects, awards and the screenshots that prove them sit next to the numbers. When it's time to write the resume or walk into the interview, nothing has to be reconstructed.</p></div>
                 <div class="card full"><p><b>Yours to keep.</b> It lives in your account, not in your employer's CRM.</p></div>
             </div>
             <p class="foot">The Career Hub is free.</p>
@@ -1169,7 +1171,17 @@
         var n = slides.length, idx = 0, playing = !reduce, vis = false, raf = 0;
         // Each clip plays once and holds on its last frame, and each slide
         // stays up for its own data-dwell seconds, so nothing loops mid-slide.
-        var vids = slides.map(function (s) { var v = $("video", s); if (v) v._once = true; return v; });
+        // A slide may carry two clips (browser on wide screens, phone on
+        // narrow ones); the one on screen is the one that plays.
+        var all = slides.map(function (s) { return $$("video", s); }), vids = [];
+        all.forEach(function (vs) { vs.forEach(function (v) { v._once = true; }); });
+        function pick() {
+            vids = all.map(function (vs) {
+                for (var k = 0; k < vs.length; k++) if (vs[k].offsetParent !== null) return vs[k];
+                return vs[0];
+            });
+        }
+        pick();
         var dots = slides.map(function (s, i) {
             var d = document.createElement("button");
             d.className = "hl-dot" + (i === 0 ? " on" : "");
@@ -1184,11 +1196,13 @@
         });
         function gate() {
             hl.classList.toggle("run", playing && vis);
-            vids.forEach(function (v, i) {
-                if (!v) return;
-                v._in = vis; v._user = !playing; v._gate = i === idx;
-                if (i !== idx && !v.paused) { v.pause(); v.currentTime = 0; }
-                sync(v);
+            all.forEach(function (vs, i) {
+                vs.forEach(function (v) {
+                    var on = i === idx && v === vids[i];
+                    v._in = vis; v._user = !playing; v._gate = on;
+                    if (!on && !v.paused) { v.pause(); v.currentTime = 0; }
+                    sync(v);
+                });
             });
         }
         function setActive(i) {
@@ -1232,6 +1246,7 @@
             }, { threshold: 0.45 }).observe(track);
         } else { vis = true; }
         document.addEventListener("visibilitychange", gate);
+        window.addEventListener("resize", function () { pick(); gate(); });
         setActive(0);
     })();
 
