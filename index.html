@@ -127,23 +127,15 @@
         .hero::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 900px; pointer-events: none;
             background: radial-gradient(60% 55% at 50% 0%, rgba(244,67,78,0.16) 0%, rgba(120,30,36,0.10) 38%, rgba(15,16,22,0) 72%); }
         .hero > * { position: relative; }
-        .wordmark { font-size: clamp(30px, 3.6vw, 46px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-bottom: 18px;
+        .wordmark { font-size: clamp(88px, 15vw, 196px); font-weight: 800; letter-spacing: -0.05em; line-height: 1.08; padding: 0 0.04em 0.04em;
             background: linear-gradient(95deg, #F4434E 0%, #D4404A 38%, #8A3D45 78%, #6F343A 100%);
             -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: var(--red); display: inline-block; }
-        .hero h1 { font-size: clamp(46px, 8.2vw, 112px); letter-spacing: -0.045em; line-height: 0.98; }
-        .hero .lead { margin: 26px auto 0; max-width: 31em; }
-        .hero .lead strong { color: #fff; font-weight: 600; }
+        .slogan { color: #E8E6E6; font-size: clamp(21px, 2.7vw, 34px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
+        .hero .lead { margin: 24px auto 0; max-width: 33em; }
+        .hero .lead strong { display: block; margin-top: 10px; color: #fff; font-weight: 600; text-wrap: balance; }
         .hero .cta { margin-top: 32px; }
         .fine { margin-top: 14px; font-size: 14px; color: var(--tx3); }
-
-        .hero-stage { margin: 56px auto 0; max-width: 1072px; padding: 0 var(--gut); }
-        .hero-box { position: relative; display: flex; align-items: center; justify-content: center; }
-        #heroWrap { position: relative; width: 360px; max-width: 100%; aspect-ratio: 9 / 16; border-radius: 26px; overflow: hidden; background: var(--bg);
-            border: 1px solid #2a2b35;
-            box-shadow: 0 0 0 1px rgba(244,67,78,0.10), 0 30px 90px rgba(244,67,78,0.14), 0 20px 60px rgba(0,0,0,0.6);
-            transition: width 0.9s var(--ease), height 0.9s var(--ease); }
-        #heroWrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.35s ease; }
-        #heroWrap video.on { opacity: 1; }
+        .hero + section { padding-top: 84px; }
 
         /* play / pause, shared by every autoplaying clip */
         .pp { position: absolute; z-index: 3; width: 40px; height: 40px; border-radius: 50%; border: 0; cursor: pointer;
@@ -154,7 +146,6 @@
         .pp .i-play { display: none; margin-left: 2px; }
         .pp[data-state="paused"] .i-play { display: block; }
         .pp[data-state="paused"] .i-pause { display: none; }
-        .hero-box .pp { right: 0; bottom: 0; }
 
         /* ---------- section rhythm ---------- */
         section { padding: 128px 0 0; }
@@ -184,6 +175,13 @@
         .on-narrow { display: none; }
         @media (max-width: 760px) { .stage .on-wide { display: none; } .stage .on-narrow { display: block; }
             .stage.wide .media.on-narrow { width: min(280px, 64%); margin: 40px auto 48px; } }
+
+        .win { border-radius: 14px; overflow: hidden; border: 1px solid #2A2B35; background: #0F1016;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 80px rgba(244,67,78,0.14); }
+        .win::before { content: ""; display: block; height: 30px; border-bottom: 1px solid #23252D;
+            background: radial-gradient(circle at 18px 50%, #FF5F57 5px, transparent 5.5px), radial-gradient(circle at 36px 50%, #FEBC2E 5px, transparent 5.5px),
+                radial-gradient(circle at 54px 50%, #28C840 5px, transparent 5.5px), #16171D; }
+        .win img { width: 100%; height: auto; }
 
         /* ---------- highlights reel ---------- */
         .hl { --slide: min(1080px, 86vw); }
@@ -260,16 +258,17 @@
         .tile h3 { font-size: clamp(25px, 2.5vw, 33px); margin-bottom: 12px; }
         .tile .eyebrow { color: var(--red); max-width: none; }
         .tile p { color: var(--tx3); font-size: 17px; max-width: 22em; }
-        .t7 { grid-column: span 7; } .t5 { grid-column: span 5; }
+        .t7 { grid-column: span 7; } .t5 { grid-column: span 5; } .t12 { grid-column: 1 / -1; }
         .tile .peek { position: absolute; right: clamp(24px, 4vw, 56px); top: 44px; width: min(250px, 38%); }
         .tile.has-peek { min-height: 480px; }
+        .tile.web { padding-bottom: 0; }
+        .tile.web .peek-web { margin: 34px 0 -56px; }
         .tile.has-peek .txt { max-width: 52%; }
         .t5.has-peek .txt { max-width: 55%; }
         .t5 .peek { width: min(200px, 34%); right: clamp(20px, 2.6vw, 36px); }
-        .tile.quote { display: flex; flex-direction: column; justify-content: space-between;
+        .tile.quote { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 22px; min-height: 340px;
             background: radial-gradient(100% 100% at 0% 100%, rgba(244,67,78,0.20), rgba(21,22,28,0) 70%), var(--s1); }
-        .tile.quote blockquote { color: #fff; font-size: clamp(26px, 3vw, 40px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.12; text-wrap: balance; }
-        .tile.quote blockquote::before { content: "\201C"; color: var(--red); display: block; font-size: 1.6em; line-height: 0.7; margin-bottom: 8px; }
+        .tile.quote blockquote { max-width: 16em; color: #fff; font-size: clamp(28px, 3.8vw, 52px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.12; text-wrap: balance; }
 
         /* ---------- sync ---------- */
         .sync-stage { position: relative; max-width: 1040px; margin: 56px auto 0; padding-left: 7%; padding-bottom: 5%; }
@@ -321,7 +320,7 @@
         .closer::before { content: ""; position: absolute; inset: auto 0 0 0; height: 620px; pointer-events: none;
             background: radial-gradient(55% 70% at 50% 100%, rgba(244,67,78,0.18) 0%, rgba(120,30,36,0.10) 42%, rgba(15,16,22,0) 74%); }
         .closer > * { position: relative; }
-        .closer img { width: 76px; height: 76px; border-radius: 18px; margin: 0 auto 28px; }
+        .closer img { width: clamp(150px, 17vw, 210px); height: auto; margin: 0 auto 30px; filter: drop-shadow(0 0 34px rgba(244,67,78,0.42)); }
         .footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 14px; color: var(--tx3); }
         .footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
         .footer-right { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
@@ -373,6 +372,7 @@
             .stage.wide .media { margin: 40px auto -4%; width: 92%; }
             .minis, .values { grid-template-columns: 1fr; gap: 14px; }
             .t7, .t5 { grid-column: 1 / -1; }
+            .tile.web .peek-web { width: 135%; }
             .price-grid, .films { grid-template-columns: 1fr; }
         }
         @media (max-width: 760px) {
@@ -380,9 +380,9 @@
             section { padding-top: 96px; }
             .chapter { padding-top: 72px; }
             .hero { padding-top: 104px; }
-            .hero-stage { margin-top: 44px; }
-            .hero-box .pp { right: 4px; bottom: 4px; }
+            .hero + section { padding-top: 64px; }
             .sec-head { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 26px; }
+            .hl-cap p, .lead, .card p { text-wrap: wrap; }
             .hl { --slide: 86vw; }
             .hl-slide, .hl-slide.wide { grid-template-columns: 1fr; grid-template-rows: auto 1fr; height: 600px; }
             .hl-media { width: min(230px, 62%); margin-top: 26px; }
@@ -391,7 +391,8 @@
             .tile.has-peek .txt { max-width: none; }
             .tile .peek { position: relative; right: auto; top: auto; width: min(240px, 66%); margin: 30px auto -34%; }
             .tile { min-height: 0; }
-            .tile.quote { min-height: 320px; }
+            .tile.web .peek-web { width: 150%; margin-bottom: -30px; }
+            .tile.quote { min-height: 300px; }
             .cards { grid-template-columns: 1fr; }
             .card.tall { grid-row: auto; }
             .sheet-in { margin: 12px; }
@@ -464,9 +465,9 @@
     <!-- ================= HERO ================= -->
     <div class="hero">
         <div class="wrap">
-            <div class="wordmark">RepKit</div>
-            <h1>The Sales Rep's Edge.</h1>
-            <p class="lead">Prep your calls. Log your day. See what every deal pays you. Grow your career. One app, and it stays yours wherever you work. <strong>Built for the rep. Not the company.</strong></p>
+            <h1 class="wordmark">RepKit</h1>
+            <p class="slogan">The Sales Rep's Edge</p>
+            <p class="lead">RepKit is the all-in-one productivity app for sales professionals. Your whole sales day runs on one app, and it stays yours wherever you work. <strong>Built for the rep. Not the company.</strong></p>
             <div class="cta">
                 <!-- The visitor's own platform becomes the red button (JS at the
                      bottom of the page); the other two stay as text links. -->
@@ -478,23 +479,6 @@
                     <a data-store="web" href="https://app.repkitapp.com/login?mode=signup">the web</a>
                 </div>
                 <p class="fine">Free to start. No card.</p>
-            </div>
-        </div>
-        <!-- Two cuts play back to back: the phone cut in a 9:16 frame, then the
-             web cut while the frame widens to 16:10, then back. Posters keep the
-             slot from being a black box before decode or when autoplay is
-             blocked. JS at the bottom drives it; without JS the phone cut plays. -->
-        <div class="hero-stage">
-            <div class="hero-box">
-                <div id="heroWrap">
-                    <video class="on" id="heroPhone" src="/assets/hero-phone.mp4" poster="/assets/hero-phone-poster.jpg"
-                           autoplay muted playsinline preload="auto" aria-label="RepKit product montage, phone"></video>
-                    <video id="heroWeb" src="/assets/hero-web.mp4" poster="/assets/hero-web-poster.jpg"
-                           muted playsinline preload="metadata" aria-label="RepKit product montage, web app"></video>
-                </div>
-                <button class="pp" id="heroPP" data-state="playing" aria-label="Pause the video">
-                    <svg class="i-pause"><use href="#i-pause"/></svg><svg class="i-play"><use href="#i-play"/></svg>
-                </button>
             </div>
         </div>
     </div>
@@ -686,13 +670,11 @@
         <div class="wrap">
             <div class="sec-head rv"><h2>More in the kit.</h2></div>
             <div class="bento">
-                <div class="tile t7 has-peek rv">
-                    <div class="txt">
-                        <p class="eyebrow">Dashboard</p>
-                        <h3>Run your whole sales day.</h3>
-                        <p>Today's calls, the notes you owe and your habits, on one screen.</p>
-                    </div>
-                    <div class="peek phone shot"><img src="/assets/shots/dashboard.jpg" alt="The RepKit dashboard: today's calls, habits and to-dos" loading="lazy"></div>
+                <div class="tile t12 web rv">
+                    <p class="eyebrow">Dashboard</p>
+                    <h3>Run your whole sales day.</h3>
+                    <p>Your forecast, your agenda and your habits, on one screen.</p>
+                    <div class="win peek-web"><img src="/assets/features/dashboard.jpg" alt="The RepKit web dashboard: quote of the day, quota forecast, habits, agenda and recent meetings" loading="lazy" width="1600" height="822"></div>
                 </div>
                 <div class="tile t5 has-peek rv">
                     <div class="txt">
@@ -702,17 +684,17 @@
                     </div>
                     <div class="peek phone"><video data-auto muted playsinline loop preload="none" poster="/assets/clips/philosophy.jpg" src="/assets/clips/philosophy.mp4"></video></div>
                 </div>
-                <div class="tile t5 quote rv">
-                    <blockquote>Show the one thing they told you hurts. Skip the tour.</blockquote>
-                    <p>A quote of the day, pulled from your own shelf.</p>
-                </div>
                 <div class="tile t7 has-peek rv">
                     <div class="txt">
                         <p class="eyebrow">Memory</p>
                         <h3>Prep that compounds.</h3>
                         <p>Every note remembered, every prep sharper. Your notes feed the AI. It learns your accounts and how you sell.</p>
                     </div>
-                    <div class="peek phone shot" style="aspect-ratio:640/1392"><img src="/assets/features/memory.jpg" alt="Post-call notes in RepKit feeding the next prep" loading="lazy"></div>
+                    <div class="peek phone shot"><img src="/assets/shots/call-sheet.jpg" alt="A RepKit call sheet built from your history, your pipeline and the web" loading="lazy"></div>
+                </div>
+                <div class="tile t12 quote rv">
+                    <blockquote>&ldquo;Show the one thing they told you hurts. Skip the tour.&rdquo;</blockquote>
+                    <p>A quote of the day, pulled from your own shelf.</p>
                 </div>
             </div>
         </div>
@@ -724,8 +706,9 @@
             <h2 class="big rv">On your phone, on the web, always in sync.</h2>
             <p class="lead rv" style="margin-top:22px">Phone in the field, browser at your desk. Everything you log shows up everywhere. Nothing to sync, nothing to re-enter.</p>
             <div class="sync-stage rv">
-                <div class="browser"><video data-auto muted playsinline loop preload="none" poster="/assets/clips/web-dashboard.jpg" src="/assets/clips/web-dashboard.mp4"></video></div>
-                <div class="phone shot"><img src="/assets/shots/dashboard.jpg" alt="RepKit on iPhone" loading="lazy"></div>
+                <!-- Same account, same moment: the Q4 numbers match on both screens. -->
+                <div class="win"><img src="/assets/features/pipeline-web.jpg" alt="Pipeline in the RepKit web app: quota $425,000, closed-won $95,000, commission $7,600" loading="lazy" width="1600" height="831"></div>
+                <div class="phone shot"><img src="/assets/shots/pipeline.jpg" alt="The same pipeline on iPhone, showing the same numbers" loading="lazy"></div>
             </div>
         </div>
     </section>
@@ -735,7 +718,7 @@
         <div class="wrap center">
             <h2 class="big rv">Built for the rep.<br><span class="red">Not the company.</span></h2>
             <div class="values">
-                <div class="value rv"><svg class="icon"><use href="#i-out"/></svg><h3>It goes where you go.</h3><p>The account is yours. Change jobs and your notes, deals and history come with you.</p></div>
+                <div class="value rv"><svg class="icon"><use href="#i-out"/></svg><h3>It goes where you go.</h3><p>The account is yours. Change jobs and your tools, workflows and career intel stay with you.</p></div>
                 <div class="value rv"><svg class="icon"><use href="#i-lock"/></svg><h3>Your notes stay yours.</h3><p>No ads. Never sold. Delete your account and data anytime in Settings.</p></div>
                 <div class="value rv"><svg class="icon"><use href="#i-eyeoff"/></svg><h3>No manager view.</h3><p>Nobody is grading your activity. There is no dashboard for your boss.</p></div>
             </div>
@@ -798,7 +781,7 @@
     <!-- ================= CLOSER ================= -->
     <div class="closer">
         <div class="wrap">
-            <img class="rv" src="/assets/repkit-logo.png" alt="">
+            <img class="rv" src="/assets/repkit-mark.png" alt="RepKit" width="560" height="401">
             <h2 class="big rv">RepKit in your corner.</h2>
             <p class="lead rv" style="margin:22px auto 0">Free plan &middot; Pro from $9.99/month &middot; 7-day free trial &middot; Cancel anytime</p>
             <div class="cta rv" style="margin-top:32px">
@@ -1089,70 +1072,6 @@
         });
     }
     document.addEventListener("visibilitychange", function () { clips.forEach(sync); });
-
-    // ---- hero: phone cut (9:16) -> web cut (16:10, frame widens) -> repeat ----
-    // The box keeps the phone cut's height the whole time, so the page never
-    // shifts; only the frame morphs, and it morphs while both cuts are on their
-    // dark opening and closing frames. Small screens just loop the phone cut.
-    (function () {
-        var wrap = $("#heroWrap"), phone = $("#heroPhone"), web = $("#heroWeb"), btn = $("#heroPP");
-        if (!wrap || !phone || !web) return;
-        var box = wrap.parentElement;
-        var MAXW = { phone: 360, web: 1024 }, RATIO = { phone: 1920 / 1080, web: 1000 / 1600 }, MORPH_MS = 900;
-        var mode = "phone", userPaused = reduce, inView = true, timer = null;
-        var small = function () { return window.innerWidth < 760; };
-        var cur = function () { return mode === "web" ? web : phone; };
-        function size() {
-            var w0 = box.getBoundingClientRect().width;
-            box.style.height = Math.round(Math.min(w0, MAXW.phone) * RATIO.phone) + "px";
-            var w = Math.min(w0, MAXW[mode]);
-            wrap.style.width = w + "px";
-            wrap.style.height = Math.round(w * RATIO[mode]) + "px";
-        }
-        function play() {
-            if (userPaused || !inView || document.hidden) return;
-            var p = cur().play(); if (p && p.catch) p.catch(function () {});
-        }
-        function show(next) {
-            var on = next === "web" ? web : phone, off = next === "web" ? phone : web;
-            mode = next;
-            off.pause();
-            on.currentTime = 0;                 // both cuts open on a dark frame
-            on.classList.add("on"); off.classList.remove("on");
-            size();                             // morph the dark frame...
-            clearTimeout(timer);
-            timer = setTimeout(play, MORPH_MS); // ...then let the next cut fade in
-        }
-        phone.addEventListener("ended", function () {
-            if (small()) { phone.currentTime = 0; play(); return; }
-            show("web");
-        });
-        web.addEventListener("ended", function () { show("phone"); });
-        // Browsers pause muted autoplay in low-power or background states and
-        // don't always resume it; any pause the visitor didn't ask for is undone.
-        [phone, web].forEach(function (v) {
-            v.addEventListener("pause", function () {
-                if (v.ended || v !== cur()) return;
-                setTimeout(play, 250);
-            });
-        });
-        if ("IntersectionObserver" in window) {
-            new IntersectionObserver(function (es) {
-                es.forEach(function (e) { inView = e.isIntersecting; if (inView) play(); else cur().pause(); });
-            }, { threshold: 0.2 }).observe(wrap);
-        }
-        document.addEventListener("visibilitychange", play);
-        window.addEventListener("touchstart", play, { once: true, passive: true });
-        window.addEventListener("resize", size);
-        btn.addEventListener("click", function () {
-            userPaused = !userPaused;
-            setPP(btn, !userPaused);
-            if (userPaused) cur().pause(); else play();
-        });
-        setPP(btn, !userPaused);
-        if (userPaused) phone.pause();
-        size();
-    })();
 
     // ---- highlights reel ----
     (function () {
