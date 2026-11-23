@@ -120,14 +120,15 @@
         .nav-right { margin-left: auto; display: flex; align-items: center; gap: 18px; font-size: 14px; }
         .nav-right .login { color: var(--tx2); }
         .nav-right .login:hover { color: #fff; }
-        @media (max-width: 860px) { .nav-links { display: none; } }
+        .nav-links { gap: 22px; }
+        @media (max-width: 1080px) { .nav-links { display: none; } }
 
         /* ---------- hero ---------- */
         .hero { padding: 128px 0 0; text-align: center; position: relative; }
         .hero::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 900px; pointer-events: none;
             background: radial-gradient(60% 55% at 50% 0%, rgba(244,67,78,0.16) 0%, rgba(120,30,36,0.10) 38%, rgba(15,16,22,0) 72%); }
         .hero > * { position: relative; }
-        .wordmark { font-size: clamp(88px, 15vw, 196px); font-weight: 800; letter-spacing: -0.05em; line-height: 1.08; padding: 0 0.04em 0.04em;
+        .wordmark { font-size: clamp(72px, 12vw, 154px); font-weight: 800; letter-spacing: -0.05em; line-height: 1.08; padding: 0 0.04em 0.04em;
             background: linear-gradient(95deg, #F4434E 0%, #D4404A 38%, #8A3D45 78%, #6F343A 100%);
             -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: var(--red); display: inline-block; }
         .slogan { color: #E8E6E6; font-size: clamp(21px, 2.7vw, 34px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
@@ -172,6 +173,11 @@
             box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 80px rgba(244,67,78,0.14); }
         .browser video, .browser img { width: 100%; height: 100%; object-fit: cover; }
 
+        .stage .media.duo { position: relative; width: min(500px, 96%); aspect-ratio: 500 / 600; margin: 48px 0; }
+        .duo .phone { position: absolute; width: 49%; }
+        .duo .front { left: 0; bottom: 0; z-index: 2; }
+        .duo .back { right: 0; top: 0; }
+        .hl-media.shot { width: min(300px, 72%); }
         .on-narrow { display: none; }
         @media (max-width: 760px) { .stage .on-wide { display: none; } .stage .on-narrow { display: block; }
             .stage.wide .media.on-narrow { width: min(280px, 64%); margin: 40px auto 48px; } }
@@ -231,6 +237,7 @@
         .stage .copy { padding: clamp(32px, 5.4vw, 76px); }
         .stage.flip .copy { order: 2; }
         .stage h2 { font-size: clamp(36px, 4.8vw, 68px); }
+        .stage h2.long { font-size: clamp(32px, 3.7vw, 52px); }
         .stage .lead { margin-top: 22px; }
         .stage .media { justify-self: center; width: min(300px, 72%); margin: 44px 0; }
         .stage .pp { left: 22px; bottom: 22px; }
@@ -266,9 +273,8 @@
         .tile.has-peek .txt { max-width: 52%; }
         .t5.has-peek .txt { max-width: 55%; }
         .t5 .peek { width: min(200px, 34%); right: clamp(20px, 2.6vw, 36px); }
-        .tile.quote { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 22px; min-height: 340px;
-            background: radial-gradient(100% 100% at 0% 100%, rgba(244,67,78,0.20), rgba(21,22,28,0) 70%), var(--s1); }
-        .tile.quote blockquote { max-width: 16em; color: #fff; font-size: clamp(28px, 3.8vw, 52px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.12; text-wrap: balance; }
+        .tile.qod img { width: 100%; height: auto; margin-top: 30px; border-radius: 3.4% / 7.8%; box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 60px rgba(244,67,78,0.10); }
+        .tile.qod { background: radial-gradient(100% 100% at 100% 100%, rgba(244,67,78,0.16), rgba(21,22,28,0) 70%), var(--s1); }
 
         /* ---------- sync ---------- */
         .sync-stage { position: relative; max-width: 1040px; margin: 56px auto 0; padding-left: 7%; padding-bottom: 5%; }
@@ -369,6 +375,7 @@
             .stage.flip .copy { order: 0; }
             .stage .copy { padding-bottom: 0; }
             .stage .media { margin: 40px 0 48px; width: min(280px, 64%); }
+            .stage .media.duo { width: min(340px, 86%); margin: 40px 0 48px; }
             .stage.wide .media { margin: 40px auto -4%; width: 92%; }
             .minis, .values { grid-template-columns: 1fr; gap: 14px; }
             .t7, .t5 { grid-column: 1 / -1; }
@@ -392,7 +399,6 @@
             .tile .peek { position: relative; right: auto; top: auto; width: min(240px, 66%); margin: 30px auto -34%; }
             .tile { min-height: 0; }
             .tile.web .peek-web { width: 150%; margin-bottom: -30px; }
-            .tile.quote { min-height: 300px; }
             .cards { grid-template-columns: 1fr; }
             .card.tall { grid-row: auto; }
             .sheet-in { margin: 12px; }
@@ -447,11 +453,13 @@
             <nav class="nav-links" aria-label="Sections">
                 <a href="#highlights">Highlights</a>
                 <a href="#prep">Prep</a>
+                <a href="#memory">Memory</a>
                 <a href="#agent">Agent</a>
                 <a href="#pipeline">Pipeline</a>
                 <a href="#habits">Habits</a>
                 <a href="#targeting">Targeting</a>
                 <a href="#career">Career</a>
+                <a href="#jobs">Jobs</a>
                 <a href="#pricing">Pricing</a>
             </nav>
             <div class="nav-right">
@@ -467,7 +475,7 @@
         <div class="wrap">
             <h1 class="wordmark">RepKit</h1>
             <p class="slogan">The Sales Rep's Edge</p>
-            <p class="lead">RepKit is the all-in-one productivity app for sales professionals. Your whole sales day runs on one app, and it stays yours wherever you work. <strong>Built for the rep. Not the company.</strong></p>
+            <p class="lead">RepKit is the all-in-one productivity app for sales professionals. Your whole sales day runs in one place, and it stays yours wherever you work. <strong>Built for the rep. Not the company.</strong></p>
             <div class="cta">
                 <!-- The visitor's own platform becomes the red button (JS at the
                      bottom of the page); the other two stay as text links. -->
@@ -500,7 +508,11 @@
                 <div class="hl-media phone"><video muted playsinline loop preload="none" poster="/assets/clips/callsheet.jpg" src="/assets/clips/callsheet.mp4"></video></div>
             </article>
             <article class="hl-slide">
-                <div class="hl-cap"><p><span class="tag">RepKit Agent</span>Replace your manual data entry. <span>Send a screenshot of your week and it's logged.</span></p></div>
+                <div class="hl-cap"><p><span class="tag">Memory</span>It learns how you work. <span>Every call sheet fits you better than the last.</span></p></div>
+                <div class="hl-media phone shot"><img src="/assets/shots/memory.jpg" alt="What you sell in RepKit" loading="lazy"></div>
+            </article>
+            <article class="hl-slide">
+                <div class="hl-cap"><p><span class="tag">RepKit Agent</span>No manual data entry. <span>Ask the Agent and it's done, anywhere in the app.</span></p></div>
                 <div class="hl-media phone"><video muted playsinline loop preload="none" poster="/assets/clips/agent.jpg" src="/assets/clips/agent.mp4"></video></div>
             </article>
             <article class="hl-slide wide">
@@ -508,16 +520,20 @@
                 <div class="hl-media browser"><video muted playsinline loop preload="none" poster="/assets/clips/web-pipeline.jpg" src="/assets/clips/web-pipeline.mp4"></video></div>
             </article>
             <article class="hl-slide">
-                <div class="hl-cap"><p><span class="tag">Daily Habits</span>Get a little better every day. <span>Three habits, one calendar.</span></p></div>
+                <div class="hl-cap"><p><span class="tag">Daily Habits &amp; To-Dos</span>Get a little better every day. <span>Three habits and a plan for the day.</span></p></div>
                 <div class="hl-media phone"><video muted playsinline loop preload="none" poster="/assets/clips/habits.jpg" src="/assets/clips/habits.mp4"></video></div>
             </article>
             <article class="hl-slide">
-                <div class="hl-cap"><p><span class="tag">Targeting &amp; Following</span>Your accounts, watched for you. <span>What changed, why it matters, how to use it.</span></p></div>
+                <div class="hl-cap"><p><span class="tag">Targeting &amp; Following</span>Your accounts, industries and people, watched for you. <span>What changed, and what they said.</span></p></div>
                 <div class="hl-media phone"><video muted playsinline loop preload="none" poster="/assets/clips/targeting.jpg" src="/assets/clips/targeting.mp4"></video></div>
             </article>
             <article class="hl-slide">
-                <div class="hl-cap"><p><span class="tag">Career Hub</span>Your whole career, one record. <span>Yours to keep, wherever you work.</span></p></div>
-                <div class="hl-media phone"><video muted playsinline loop preload="none" poster="/assets/clips/career.jpg" src="/assets/clips/career.mp4"></video></div>
+                <div class="hl-cap"><p><span class="tag">Career Hub</span>Your whole career, one record. <span>Every role you've held and what it paid.</span></p></div>
+                <div class="hl-media phone shot"><img src="/assets/shots/career-earnings.jpg" alt="Career history and earnings trend in RepKit" loading="lazy"></div>
+            </article>
+            <article class="hl-slide">
+                <div class="hl-cap"><p><span class="tag">Job Opportunities</span>Always be interviewing. <span>Qualified roles, found for you.</span></p></div>
+                <div class="hl-media phone shot"><img src="/assets/shots/find-roles.jpg" alt="Find roles in RepKit" loading="lazy"></div>
             </article>
         </div>
         <div class="hl-nav">
@@ -566,14 +582,33 @@
                 </div>
             </div>
 
-            <!-- AGENT -->
-            <div class="chapter" id="agent">
+            <!-- MEMORY -->
+            <div class="chapter" id="memory">
                 <div class="stage flip rv">
                     <div class="copy">
+                        <p class="eyebrow">Memory</p>
+                        <h2>It learns how you work.</h2>
+                        <p class="lead">RepKit remembers what you sell, how you sell it and what you believe. Every call sheet and every answer gets more tailored to you.</p>
+                        <button class="more" data-open="m-memory"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>What it remembers</button>
+                    </div>
+                    <div class="media phone shot"><img src="/assets/shots/memory.jpg" alt="What you sell in RepKit: your product, your buyers and why they buy" loading="lazy"></div>
+
+                </div>
+                <div class="minis">
+                    <div class="mini rv"><svg class="icon"><use href="#i-brief"/></svg><h3>What you sell</h3><p>Your product, your buyers and why they buy. Set it once.</p></div>
+                    <div class="mini rv"><svg class="icon"><use href="#i-quote"/></svg><h3>What you believe</h3><p>Your philosophy and the way you like to work shape the advice you get.</p></div>
+                    <div class="mini rv"><svg class="icon"><use href="#i-clock"/></svg><h3>Every account</h3><p>Notes from each call feed the next call sheet.</p></div>
+                </div>
+            </div>
+
+            <!-- AGENT -->
+            <div class="chapter" id="agent">
+                <div class="stage rv">
+                    <div class="copy">
                         <p class="eyebrow">RepKit Agent</p>
-                        <h2>Replace your manual data entry.</h2>
-                        <p class="lead">Say it, type it, or send a screenshot of your calendar. Calls, to-dos, deals and job opps get logged for you.</p>
-                        <button class="more" data-open="m-agent"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>What the Agent does</button>
+                        <h2>No manual data entry.</h2>
+                        <p class="lead">Ask the Agent and it's done, anywhere in the app. Say it, type it, or send a screenshot of your calendar.</p>
+                        <button class="more" data-open="m-agent"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>What the Agent can do</button>
                     </div>
                     <div class="media phone"><video data-auto muted playsinline loop preload="none" poster="/assets/clips/agent.jpg" src="/assets/clips/agent.mp4"></video></div>
                     <button class="pp" data-state="playing" aria-label="Pause the video"><svg class="i-pause"><use href="#i-pause"/></svg><svg class="i-play"><use href="#i-play"/></svg></button>
@@ -581,7 +616,7 @@
                 <div class="minis">
                     <div class="mini rv"><svg class="icon"><use href="#i-camera"/></svg><h3>Screenshot your week</h3><p>A picture of your calendar becomes a week of logged calls.</p></div>
                     <div class="mini rv"><svg class="icon"><use href="#i-mic"/></svg><h3>Say it or type it</h3><p>"Demo with Rivian Thursday at 10." That is the whole entry.</p></div>
-                    <div class="mini rv"><svg class="icon"><use href="#i-check"/></svg><h3>You confirm</h3><p>It shows what it is about to log. One tap saves it.</p></div>
+                    <div class="mini rv"><svg class="icon"><use href="#i-check"/></svg><h3>Across the whole app</h3><p>Calls, notes, to-dos, habits, deals, job opps and watched accounts. One box does all of it.</p></div>
                 </div>
             </div>
 
@@ -608,60 +643,86 @@
 
             <!-- HABITS -->
             <div class="chapter" id="habits">
-                <div class="stage rv">
+                <div class="stage flip rv">
                     <div class="copy">
-                        <p class="eyebrow">Daily Habits</p>
+                        <p class="eyebrow">Daily Habits &amp; To-Dos</p>
                         <h2>Get a little better every day.</h2>
-                        <p class="lead">Pick three habits. Tap them when they are done. Watch the month fill in.</p>
-                        <button class="more" data-open="m-habits"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>How habits work</button>
+                        <p class="lead">Three habits to tick and a plan for the day. What's written down gets remembered. And done.</p>
+                        <button class="more" data-open="m-habits"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>How habits and to-dos work</button>
                     </div>
                     <div class="media phone"><video data-auto muted playsinline loop preload="none" poster="/assets/clips/habits.jpg" src="/assets/clips/habits.mp4"></video></div>
                     <button class="pp" data-state="playing" aria-label="Pause the video"><svg class="i-pause"><use href="#i-pause"/></svg><svg class="i-play"><use href="#i-play"/></svg></button>
                 </div>
                 <div class="minis">
                     <div class="mini rv"><svg class="icon"><use href="#i-list"/></svg><h3>Three habits</h3><p>Few enough to keep. You choose what they are.</p></div>
+                    <div class="mini rv"><svg class="icon"><use href="#i-doc"/></svg><h3>Plan your day</h3><p>Write the day's to-dos down. What's written down gets remembered, and done.</p></div>
                     <div class="mini rv"><svg class="icon"><use href="#i-cal"/></svg><h3>One calendar</h3><p>Green days and missed days. The month at a glance.</p></div>
-                    <div class="mini rv"><svg class="icon"><use href="#i-moon"/></svg><h3>Days off</h3><p>Mark one when you take one.</p></div>
                 </div>
             </div>
 
             <!-- TARGETING -->
             <div class="chapter" id="targeting">
-                <div class="stage flip rv">
+                <div class="stage rv">
                     <div class="copy">
                         <p class="eyebrow">Targeting &amp; Following <span class="pro-tag">Pro</span></p>
-                        <h2>Your accounts, watched for you.</h2>
-                        <p class="lead">Name the companies and industries you care about. RepKit tells you what changed, why it matters and how to use it.</p>
-                        <button class="more" data-open="m-targeting"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>What you can watch</button>
+                        <h2 class="long">Your accounts, industries and people, watched for you.</h2>
+                        <p class="lead">Name the companies and industries you sell to, and the people you learn from. Every week RepKit brings you what changed and what they said.</p>
+                        <button class="more" data-open="m-targeting"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>What you can watch and follow</button>
                     </div>
-                    <div class="media phone"><video data-auto muted playsinline loop preload="none" poster="/assets/clips/targeting.jpg" src="/assets/clips/targeting.mp4"></video></div>
+                    <div class="media duo">
+                        <div class="phone front"><video data-auto muted playsinline loop preload="none" poster="/assets/clips/targeting.jpg" src="/assets/clips/targeting.mp4"></video></div>
+                        <div class="phone shot back"><img src="/assets/shots/following.jpg" alt="Following in RepKit: Chris Orlob and Naval Ravikant, with what they said this week" loading="lazy"></div>
+                    </div>
                     <button class="pp" data-state="playing" aria-label="Pause the video"><svg class="i-pause"><use href="#i-pause"/></svg><svg class="i-play"><use href="#i-play"/></svg></button>
                 </div>
                 <div class="minis">
-                    <div class="mini rv"><svg class="icon"><use href="#i-target"/></svg><h3>Weekly briefs</h3><p>A fresh brief on each account you watch, every week.</p></div>
-                    <div class="mini rv"><svg class="icon"><use href="#i-building"/></svg><h3>Industries too</h3><p>Watch a whole industry, not only named accounts.</p></div>
-                    <div class="mini rv"><svg class="icon"><use href="#i-users"/></svg><h3>People you learn from</h3><p>Follow them and get what they said this week, in their exact words.</p></div>
+                    <div class="mini rv"><svg class="icon"><use href="#i-target"/></svg><h3>Targeting</h3><p>A weekly brief on each account and industry you watch: what changed, why it matters, how to use it.</p></div>
+                    <div class="mini rv"><svg class="icon"><use href="#i-users"/></svg><h3>Following</h3><p>Follow the people you learn from. Chris Orlob, for example. Get what they said this week, in their exact words.</p></div>
+                    <div class="mini rv"><svg class="icon"><use href="#i-quote"/></svg><h3>Save the line</h3><p>One tap sends a quote to your Philosophy library.</p></div>
                 </div>
             </div>
 
             <!-- CAREER -->
             <div class="chapter" id="career">
-                <div class="stage rv">
+                <div class="stage flip rv">
                     <div class="copy">
                         <p class="eyebrow">Career Hub</p>
                         <h2>Your whole career, one record.</h2>
-                        <p class="lead">Your work history, what each year paid and the roles you are chasing. It belongs to you, not your employer.</p>
-                        <button class="more" data-open="m-career"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>What the Career Hub holds</button>
+                        <p class="lead">Every sales job you've held: your title, quota, attainment and what it paid, year by year. Kept where no employer can switch it off.</p>
+                        <button class="more" data-open="m-career"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>What your record holds</button>
                     </div>
-                    <div class="media phone"><video data-auto muted playsinline loop preload="none" poster="/assets/clips/career.jpg" src="/assets/clips/career.mp4"></video></div>
+                    <div class="media phone shot"><img src="/assets/shots/career-earnings.jpg" alt="Career history in RepKit: lifetime stats and the earnings trend" loading="lazy"></div>
+
+                </div>
+                <div class="minis">
+                    <div class="mini rv"><svg class="icon"><use href="#i-brief"/></svg><h3>Job experience</h3><p>Every role, with your title, quota, attainment and W2 for each year.</p></div>
+                    <div class="mini rv"><svg class="icon"><use href="#i-bars"/></svg><h3>Lifetime stats</h3><p>Lifetime W2, your best year and the years you've tracked, added up for you.</p></div>
+                    <div class="mini rv"><svg class="icon"><use href="#i-trend"/></svg><h3>Earnings trend</h3><p>What each year paid, drawn as one line.</p></div>
+                </div>
+            </div>
+
+            <!-- JOBS -->
+            <div class="chapter" id="jobs">
+                <div class="stage rv">
+                    <div class="copy">
+                        <p class="eyebrow">Job Opportunities</p>
+                        <h2>Always be interviewing.</h2>
+                        <p class="lead">The best time to look is before you have to. RepKit finds open roles that fit your level and tracks each one like a deal.</p>
+                        <button class="more" data-open="m-jobs"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>How Find roles works</button>
+                    </div>
+                    <div class="media duo">
+                        <div class="phone shot front"><img src="/assets/shots/find-roles.jpg" alt="Find roles in RepKit: open roles matched to your level" loading="lazy"></div>
+                        <div class="phone back"><video data-auto muted playsinline loop preload="none" poster="/assets/clips/career.jpg" src="/assets/clips/career.mp4"></video></div>
+                    </div>
                     <button class="pp" data-state="playing" aria-label="Pause the video"><svg class="i-pause"><use href="#i-pause"/></svg><svg class="i-play"><use href="#i-play"/></svg></button>
                 </div>
                 <div class="minis">
                     <div class="mini rv"><svg class="icon"><use href="#i-search"/></svg><h3>Find roles</h3><p>Open roles at companies that sell to your buyers, matched to your level.</p></div>
-                    <div class="mini rv"><svg class="icon"><use href="#i-trend"/></svg><h3>Earnings trend</h3><p>Every role you have held and what it paid, year over year.</p></div>
-                    <div class="mini rv"><svg class="icon"><use href="#i-brief"/></svg><h3>Job pipeline</h3><p>Your next role, tracked like a deal.</p></div>
+                    <div class="mini rv"><svg class="icon"><use href="#i-check"/></svg><h3>One tap to your pipeline</h3><p>Like a role? Add it to your job pipeline in a tap.</p></div>
+                    <div class="mini rv"><svg class="icon"><use href="#i-brief"/></svg><h3>Tracked like a deal</h3><p>Serious, promising, exploratory. Every conversation in its stage.</p></div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -684,17 +745,11 @@
                     </div>
                     <div class="peek phone"><video data-auto muted playsinline loop preload="none" poster="/assets/clips/philosophy.jpg" src="/assets/clips/philosophy.mp4"></video></div>
                 </div>
-                <div class="tile t7 has-peek rv">
-                    <div class="txt">
-                        <p class="eyebrow">Memory</p>
-                        <h3>Prep that compounds.</h3>
-                        <p>Every note remembered, every prep sharper. Your notes feed the AI. It learns your accounts and how you sell.</p>
-                    </div>
-                    <div class="peek phone shot"><img src="/assets/shots/call-sheet.jpg" alt="A RepKit call sheet built from your history, your pipeline and the web" loading="lazy"></div>
-                </div>
-                <div class="tile t12 quote rv">
-                    <blockquote>&ldquo;Show the one thing they told you hurts. Skip the tour.&rdquo;</blockquote>
-                    <p>A quote of the day, pulled from your own shelf.</p>
+                <div class="tile t7 qod rv">
+                    <p class="eyebrow">Quote of the day</p>
+                    <h3>One line from your own shelf, every morning.</h3>
+                    <p>Save the lines that sharpen you. RepKit hands one back each day.</p>
+                    <img src="/assets/shots/quote-card.jpg" alt="The quote of the day card in RepKit" loading="lazy" width="1062" height="464">
                 </div>
             </div>
         </div>
@@ -845,20 +900,35 @@
         </div>
     </dialog>
 
+    <dialog class="sheet" id="m-memory" aria-labelledby="m-memory-h">
+        <div class="sheet-in">
+            <button class="x" aria-label="Close"><svg viewBox="0 0 24 24"><use href="#i-x"/></svg></button>
+            <p class="eyebrow">Memory</p>
+            <h2 id="m-memory-h">The more you use it, the more it's yours.</h2>
+            <p class="lead">Most tools start from zero every time. RepKit keeps what it learns about you and puts it to work.</p>
+            <div class="cards">
+                <div class="card tall"><p><b>What you sell.</b> Your product, who buys it, why they buy and who you compete with.</p><div class="phone shot"><img src="/assets/shots/memory.jpg" alt="What you sell in RepKit" loading="lazy"></div></div>
+                <div class="card"><p><b>Suggested from your calls.</b> It notices what your notes keep saying and offers to add it. You decide.</p></div>
+                <div class="card"><p><b>What you believe.</b> Tell the Agent how you like to work and what you believe about selling. It remembers.</p></div>
+                <div class="card"><p><b>Call over call.</b> What happened last time shows up in the next call sheet.</p></div>
+                <div class="card full"><p><b>Tailored, not generic.</b> The same question gets a different answer for you than for the rep down the hall.</p></div>
+            </div>
+            <p class="foot">Unlimited memory is part of Pro.</p>
+        </div>
+    </dialog>
+
     <dialog class="sheet" id="m-agent" aria-labelledby="m-agent-h">
         <div class="sheet-in">
             <button class="x" aria-label="Close"><svg viewBox="0 0 24 24"><use href="#i-x"/></svg></button>
             <p class="eyebrow">RepKit Agent</p>
-            <h2 id="m-agent-h">Tell it what happened. It does the typing.</h2>
-            <p class="lead">The red button in the middle of the app. One box for everything you would otherwise key in by hand.</p>
+            <h2 id="m-agent-h">Ask for it. It's done.</h2>
+            <p class="lead">The red button in the middle of the app. Anything you would key in by hand, you can ask for instead.</p>
             <div class="cards">
-                <div class="card tall">
-                    <p><b>Screenshot your week.</b> Send a picture of your calendar. It reads the meetings and logs each one.</p>
-                    <div class="phone shot"><img src="/assets/shots/agent.jpg" alt="The RepKit Agent confirming what it will log" loading="lazy"></div>
-                </div>
+                <div class="card tall"><p><b>Screenshot your week.</b> Send a picture of your calendar. It reads the meetings and logs each one.</p><div class="phone shot"><img src="/assets/shots/agent.jpg" alt="The RepKit Agent confirming what it will log" loading="lazy"></div></div>
                 <div class="card"><p><b>Say it or type it.</b> "Demo with Rivian Thursday at 10. Remind me to send the revised pricing." Done.</p></div>
-                <div class="card"><p><b>You confirm.</b> It shows what it is about to log. One tap saves it.</p></div>
-                <div class="card"><p><b>Calls, to-dos, deals, job opps.</b> One place to add any of them.</p></div>
+                <div class="card"><p><b>Anywhere in the app.</b> Log a call, add notes, tick a habit, update a deal, set your quota, track a job opp, watch an account, save a quote.</p></div>
+                <div class="card"><p><b>It looks things up.</b> Ask it to research a company or pull the latest brief on an account you watch.</p></div>
+                <div class="card full"><p><b>You confirm.</b> It shows what it is about to log. One tap saves it.</p></div>
             </div>
             <p class="foot">The free plan includes AI chat to try. Pro unlocks full use.</p>
         </div>
@@ -886,18 +956,15 @@
     <dialog class="sheet" id="m-habits" aria-labelledby="m-habits-h">
         <div class="sheet-in">
             <button class="x" aria-label="Close"><svg viewBox="0 0 24 24"><use href="#i-x"/></svg></button>
-            <p class="eyebrow">Daily Habits</p>
+            <p class="eyebrow">Daily Habits &amp; To-Dos</p>
             <h2 id="m-habits-h">The boring things, done daily.</h2>
-            <p class="lead">Pick the three things that move your number and track nothing else.</p>
+            <p class="lead">Pick the three habits that move your number. Then write the day down.</p>
             <div class="cards">
-                <div class="card tall">
-                    <p><b>Three habits.</b> Yours to choose. Prospecting touches. Prep before every meeting. Notes logged same day.</p>
-                    <div class="phone shot"><img src="/assets/shots/habits.jpg" alt="Daily Habits in RepKit" loading="lazy"></div>
-                </div>
+                <div class="card tall"><p><b>Three habits.</b> Yours to choose. Prospecting touches. Prep before every meeting. Notes logged same day.</p><div class="phone shot"><img src="/assets/shots/habits.jpg" alt="Daily Habits in RepKit" loading="lazy"></div></div>
+                <div class="card"><p><b>Plan your day.</b> A to-do list sits under your habits. What's written down gets remembered, and done.</p></div>
                 <div class="card"><p><b>One calendar.</b> Green when you hit them, so the month tells the truth.</p></div>
                 <div class="card"><p><b>Month score and streak.</b> A percent for the month and a count of days in a row.</p></div>
-                <div class="card"><p><b>Days off.</b> Mark one when you take one.</p></div>
-                <div class="card full"><p><b>To-dos underneath.</b> The day's list sits under your habits, so one screen covers both.</p></div>
+                <div class="card full"><p><b>Days off.</b> Mark one when you take one.</p></div>
             </div>
             <p class="foot">Daily Habits and to-dos are free.</p>
         </div>
@@ -910,14 +977,11 @@
             <h2 id="m-targeting-h">Name it once. RepKit keeps watch.</h2>
             <p class="lead">A short list of accounts, industries and people. A fresh read on each of them every week.</p>
             <div class="cards">
-                <div class="card"><p><b>Weekly briefs.</b> What changed at each account, why it matters, and how to use it on a call.</p></div>
+                <div class="card tall"><p><b>Follow people.</b> Pick the voices you learn from. Chris Orlob, for example. Every week you get what they said, in their exact words.</p><div class="phone shot"><img src="/assets/shots/following.jpg" alt="Following in RepKit" loading="lazy"></div></div>
+                <div class="card"><p><b>Target accounts.</b> A weekly brief on each company you watch: what changed, why it matters, and how to use it on a call.</p></div>
                 <div class="card"><p><b>Industries too.</b> Watch a whole industry, not only named accounts.</p></div>
-                <div class="card"><p><b>Follow people.</b> Pick the people you learn from. Get what they said this week, in their exact words.</p></div>
                 <div class="card"><p><b>Save the line.</b> One tap sends a quote to your Philosophy library.</p></div>
-                <div class="card full">
-                    <p><b>On the web too.</b> Read the full briefs at your desk.</p>
-                    <div class="browser" style="aspect-ratio:1600/824"><img src="/assets/features/targeting-web.jpg" alt="Targeting &amp; Following in the RepKit web app" loading="lazy"></div>
-                </div>
+                <div class="card full"><p><b>On the web too.</b> Read the full briefs at your desk.</p><div class="browser" style="aspect-ratio:1600/824"><img src="/assets/features/targeting-web.jpg" alt="Targeting &amp; Following in the RepKit web app" loading="lazy"></div></div>
             </div>
             <p class="foot">Targeting &amp; Following is part of Pro. 7-day free trial.</p>
         </div>
@@ -930,18 +994,29 @@
             <h2 id="m-career-h">Jobs change. Your record comes with you.</h2>
             <p class="lead">Your numbers and your history, kept where no employer can switch them off.</p>
             <div class="cards">
-                <div class="card tall">
-                    <p><b>Find roles.</b> Open roles at companies that sell to your buyers, matched to your level. Add one to your pipeline in a tap.</p>
-                    <div class="phone shot"><img src="/assets/shots/find-roles.jpg" alt="Find roles in RepKit" loading="lazy"></div>
-                </div>
-                <div class="card tall">
-                    <p><b>Earnings trend.</b> What each year paid, drawn as one line.</p>
-                    <div class="phone shot"><img src="/assets/shots/career-earnings.jpg" alt="Earnings trend in RepKit" loading="lazy"></div>
-                </div>
-                <div class="card"><p><b>Work history.</b> Every role and what it paid, in one place.</p></div>
-                <div class="card"><p><b>Job pipeline.</b> Your next role, tracked like a deal.</p></div>
+                <div class="card tall"><p><b>Earnings trend.</b> What each year paid, drawn as one line.</p><div class="phone shot"><img src="/assets/shots/career-earnings.jpg" alt="Career history and earnings trend in RepKit" loading="lazy"></div></div>
+                <div class="card"><p><b>Job experience.</b> Every role you've held, with your title, quota, attainment and W2 for each year.</p></div>
+                <div class="card"><p><b>Lifetime stats.</b> Lifetime W2, your best year and the years you've tracked, added up for you.</p></div>
+                <div class="card"><p><b>Your stories.</b> Keep the wins and the proof next to the numbers, ready for the next interview.</p></div>
+                <div class="card full"><p><b>Yours to keep.</b> It lives in your account, not in your employer's CRM.</p></div>
             </div>
             <p class="foot">The Career Hub is free.</p>
+        </div>
+    </dialog>
+
+    <dialog class="sheet" id="m-jobs" aria-labelledby="m-jobs-h">
+        <div class="sheet-in">
+            <button class="x" aria-label="Close"><svg viewBox="0 0 24 24"><use href="#i-x"/></svg></button>
+            <p class="eyebrow">Job Opportunities</p>
+            <h2 id="m-jobs-h">Know your options before you need them.</h2>
+            <p class="lead">Reps who keep interviewing know what they're worth. RepKit does the looking.</p>
+            <div class="cards">
+                <div class="card tall"><p><b>Find roles.</b> Open roles at companies that sell to your buyers, matched to your level.</p><div class="phone shot"><img src="/assets/shots/find-roles.jpg" alt="Find roles in RepKit" loading="lazy"></div></div>
+                <div class="card"><p><b>Steer it.</b> Wrong industry? Remote only? Higher pay? Say so and the next search adjusts.</p></div>
+                <div class="card"><p><b>One tap to your pipeline.</b> Like a role? Add it to your job pipeline in a tap.</p></div>
+                <div class="card"><p><b>Tracked like a deal.</b> Serious, promising, exploratory. Every conversation in its stage.</p></div>
+                <div class="card full"><p><b>Straight from the source.</b> Roles come from companies' own career pages.</p></div>
+            </div>
         </div>
     </dialog>
 
