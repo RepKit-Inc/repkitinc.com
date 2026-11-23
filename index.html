@@ -265,6 +265,7 @@
         .more { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; padding: 9px 20px 9px 9px; border-radius: 999px; border: 0; cursor: pointer;
             background: rgba(255,255,255,0.08); color: #fff; font-weight: 600; font-size: 16px; transition: background 0.2s ease; }
         .more:hover { background: rgba(255,255,255,0.15); }
+        .mores { display: flex; flex-wrap: wrap; gap: 0 12px; }
         .more i { width: 30px; height: 30px; border-radius: 50%; background: #fff; color: #111; display: grid; place-items: center; transition: transform 0.3s var(--ease), background 0.2s ease; }
         .more:hover i { transform: rotate(90deg); background: var(--red); color: #fff; }
         .more i svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
@@ -478,7 +479,6 @@
                 <a href="#habits">Habits</a>
                 <a href="#targeting">Targeting</a>
                 <a href="#career">Career</a>
-                <a href="#jobs">Jobs</a>
                 <a href="#pricing">Pricing</a>
             </nav>
             <div class="nav-right">
@@ -541,13 +541,13 @@
                 <div class="hl-cap"><p><span class="tag">RepKit Agent</span>No manual data entry. <span>Ask the Agent and it's done, anywhere in the app.</span></p></div>
                 <div class="hl-media phone"><video muted playsinline preload="none" poster="/assets/clips/agent.jpg" src="/assets/clips/agent.mp4"></video></div>
             </article>
-            <article class="hl-slide wide" data-dwell="9">
+            <article class="hl-slide wide" data-dwell="10">
                 <div class="hl-cap"><p><span class="tag">Pipeline &amp; Commission</span>See what every deal pays you. <span>Pipeline, quota and commission in one view.</span></p></div>
                 <div class="hl-media browser"><video muted playsinline preload="none" poster="/assets/clips/web-pipeline.jpg" src="/assets/clips/web-pipeline.mp4"></video></div>
             </article>
-            <article class="hl-slide" data-dwell="8">
+            <article class="hl-slide" data-dwell="11.5">
                 <div class="hl-cap"><p><span class="tag">Daily Habits &amp; To-Dos</span>Get a little better every day. <span>Three habits and a plan for the day.</span></p></div>
-                <div class="hl-media phone"><video muted playsinline preload="none" poster="/assets/clips/habits.jpg" src="/assets/clips/habits.mp4"></video></div>
+                <div class="hl-media phone shot"><video muted playsinline preload="none" poster="/assets/clips/habits-day.jpg" src="/assets/clips/habits-day.mp4"></video></div>
             </article>
             <article class="hl-slide" data-dwell="11.5">
                 <div class="hl-cap"><p><span class="tag">Targeting</span>Your accounts and industries, watched for you. <span>What changed, why it matters, how to use it.</span></p></div>
@@ -680,7 +680,7 @@
                         <p class="lead">Three habits to tick and a plan for the day. What's written down gets remembered. And done.</p>
                         <button class="more" data-open="m-habits"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>How habits and to-dos work</button>
                     </div>
-                    <div class="media phone"><video data-auto muted playsinline loop preload="none" poster="/assets/clips/habits.jpg" src="/assets/clips/habits.mp4"></video></div>
+                    <div class="media phone shot"><video data-auto muted playsinline loop preload="none" poster="/assets/clips/habits-day.jpg" src="/assets/clips/habits-day.mp4"></video></div>
                     <button class="pp" data-state="playing" aria-label="Pause the video"><svg class="i-pause"><use href="#i-pause"/></svg><svg class="i-play"><use href="#i-play"/></svg></button>
                 </div>
                 <div class="minis">
@@ -712,44 +712,27 @@
                 </div>
             </div>
 
-            <!-- CAREER -->
+            <!-- CAREER (job experience + job opportunities together) -->
             <div class="chapter" id="career">
                 <div class="stage flip rv">
                     <div class="copy">
                         <p class="eyebrow">Career Hub</p>
                         <h2>Your whole career, one record.</h2>
-                        <p class="lead">Every sales job you've held: your title, quota, attainment and what it paid, year by year. Kept where no employer can switch it off.</p>
-                        <button class="more" data-open="m-career"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>What your record holds</button>
-                    </div>
-                    <div class="media phone shot"><img src="/assets/shots/career-earnings.jpg" alt="Career history in RepKit: lifetime stats and the earnings trend" loading="lazy"></div>
-
-                </div>
-                <div class="minis">
-                    <div class="mini rv"><svg class="icon"><use href="#i-brief"/></svg><h3>Job experience</h3><p>Every role, with your title, quota, attainment and W2 for each year.</p></div>
-                    <div class="mini rv"><svg class="icon"><use href="#i-bars"/></svg><h3>Lifetime stats</h3><p>Lifetime W2, your best year and the years you've tracked, added up for you.</p></div>
-                    <div class="mini rv"><svg class="icon"><use href="#i-trend"/></svg><h3>Earnings trend</h3><p>What each year paid, drawn as one line.</p></div>
-                </div>
-            </div>
-
-            <!-- JOBS -->
-            <div class="chapter" id="jobs">
-                <div class="stage rv">
-                    <div class="copy">
-                        <p class="eyebrow">Job Opportunities</p>
-                        <h2>Always be interviewing.</h2>
-                        <p class="lead">The best time to look is before you have to. RepKit finds open roles that fit your level and tracks each one like a deal.</p>
-                        <button class="more" data-open="m-jobs"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>How Find roles works</button>
+                        <p class="lead">Every sales job you've held and what it paid, year by year. And a curated pipeline of job opportunities for what comes next. Always be interviewing.</p>
+                        <div class="mores">
+                            <button class="more" data-open="m-career"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>Your job experience</button>
+                            <button class="more" data-open="m-jobs"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>Your job opportunities</button>
+                        </div>
                     </div>
                     <div class="media duo">
-                        <div class="phone shot front"><img src="/assets/shots/find-roles.jpg" alt="Find roles in RepKit: open roles matched to your level" loading="lazy"></div>
-                        <div class="phone back"><video data-auto muted playsinline loop preload="none" poster="/assets/clips/career.jpg" src="/assets/clips/career.mp4"></video></div>
+                        <div class="phone shot front"><img src="/assets/shots/career-earnings.jpg" alt="Career history in RepKit: lifetime stats and the earnings trend" loading="lazy"></div>
+                        <div class="phone shot back"><img src="/assets/shots/find-roles.jpg" alt="Find roles in RepKit: open roles matched to your level" loading="lazy"></div>
                     </div>
-                    <button class="pp" data-state="playing" aria-label="Pause the video"><svg class="i-pause"><use href="#i-pause"/></svg><svg class="i-play"><use href="#i-play"/></svg></button>
                 </div>
                 <div class="minis">
-                    <div class="mini rv"><svg class="icon"><use href="#i-search"/></svg><h3>Find roles</h3><p>Open roles at companies that sell to your buyers, matched to your level.</p></div>
-                    <div class="mini rv"><svg class="icon"><use href="#i-check"/></svg><h3>One tap to your pipeline</h3><p>Like a role? Add it to your job pipeline in a tap.</p></div>
-                    <div class="mini rv"><svg class="icon"><use href="#i-brief"/></svg><h3>Tracked like a deal</h3><p>Serious, promising, exploratory. Every conversation in its stage.</p></div>
+                    <div class="mini rv"><svg class="icon"><use href="#i-trend"/></svg><h3>Job experience</h3><p>Every role, with your title, quota, attainment and W2 for each year. Lifetime stats and your earnings trend, added up for you.</p></div>
+                    <div class="mini rv"><svg class="icon"><use href="#i-brief"/></svg><h3>Job opportunities pipeline</h3><p>Curate a pipeline of job opportunities and track each one like a deal: serious, promising, exploratory.</p></div>
+                    <div class="mini rv"><svg class="icon"><use href="#i-search"/></svg><h3>Find roles</h3><p>Qualified open roles at companies that sell to your buyers, matched to your level. Add one in a tap.</p></div>
                 </div>
             </div>
 
