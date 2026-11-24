@@ -528,9 +528,9 @@
             </div>
         </div>
         <div class="hl-track" tabindex="0" aria-label="Highlights">
-            <article class="hl-slide on" data-dwell="14.5">
+            <article class="hl-slide on" data-dwell="18">
                 <div class="hl-cap"><p><span class="tag">Meeting Prep</span>Never show up cold again. <span>One tap builds your meeting prep for the account in front of you.</span></p></div>
-                <div class="hl-media phone"><video muted playsinline preload="none" poster="/assets/clips/callsheet.jpg" src="/assets/clips/callsheet.mp4"></video></div>
+                <div class="hl-media phone shot"><video muted playsinline preload="none" poster="/assets/clips/callsheet.jpg" src="/assets/clips/callsheet.mp4"></video></div>
             </article>
             <article class="hl-slide" data-dwell="10">
                 <div class="hl-cap"><p><span class="tag">Memory</span>It learns how you work. <span>Every call sheet fits you better than the last.</span></p></div>
@@ -547,7 +547,7 @@
                 <div class="hl-cap"><p><span class="tag">RepKit Agent</span>No manual data entry. <span>Ask the Agent and it's done, anywhere in the app.</span></p></div>
                 <div class="hl-media phone shot"><video muted playsinline preload="none" poster="/assets/clips/agent.jpg" src="/assets/clips/agent.mp4"></video></div>
             </article>
-            <article class="hl-slide wide" data-dwell="11.5">
+            <article class="hl-slide wide" data-dwell="17.5" data-dwell-narrow="11.5">
                 <div class="hl-cap"><p><span class="tag">Pipeline &amp; Commission</span>See what every deal pays you. <span>Move a deal to Won and watch your commission move with it.</span></p></div>
                 <div class="hl-media browser on-wide"><video muted playsinline preload="none" poster="/assets/clips/web-pipeline.jpg" src="/assets/clips/web-pipeline.mp4"></video></div>
                 <div class="hl-media phone shot on-narrow"><video muted playsinline preload="none" poster="/assets/clips/pipeline-won.jpg" src="/assets/clips/pipeline-won.mp4"></video></div>
@@ -609,7 +609,7 @@
                         <p class="lead">Tap once before a meeting. RepKit builds your call sheet: one page of prep for this account, shaped by what you sell and how you sell it.</p>
                         <button class="more" data-open="m-prep"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>What's on a call sheet</button>
                     </div>
-                    <div class="media phone"><video data-auto muted playsinline loop preload="none" poster="/assets/clips/callsheet.jpg" src="/assets/clips/callsheet.mp4"></video></div>
+                    <div class="media phone shot"><video data-auto muted playsinline loop preload="none" poster="/assets/clips/callsheet.jpg" src="/assets/clips/callsheet.mp4"></video></div>
                     <button class="pp" data-state="playing" aria-label="Pause the video"><svg class="i-pause"><use href="#i-pause"/></svg><svg class="i-play"><use href="#i-play"/></svg></button>
                 </div>
                 <div class="minis">
@@ -914,6 +914,7 @@
                 <div class="card"><p><b>What to ask.</b> Discovery questions in the order to ask them, aimed at what you sell.</p></div>
                 <div class="card"><p><b>Who's in the room.</b> Real people with real titles. Say who you're meeting and the sheet adjusts.</p></div>
                 <div class="card"><p><b>Watch-outs.</b> The objections to expect before you hear them.</p></div>
+                <div class="card full"><p><b>Your own words of wisdom.</b> Under the sheet sits Meeting Wisdom: the lines you saved in Philosophy for this kind of meeting. Your discovery lines before a discovery call, your closing lines before a close.</p></div>
                 <div class="card tall">
                     <p><b>RepKit Assistant.</b> A dedicated assistant on every meeting. Tap the orb and ask.</p>
                     <div class="phone shot"><video data-auto muted playsinline loop preload="none" poster="/assets/clips/assistant.jpg" src="/assets/clips/assistant.mp4" aria-label="Asking the RepKit Assistant a question about an upcoming meeting"></video></div>
@@ -1216,7 +1217,9 @@
             d.className = "hl-dot" + (i === 0 ? " on" : "");
             d.setAttribute("role", "tab");
             d.setAttribute("aria-label", ($(".tag", s) || {}).textContent || ("Highlight " + (i + 1)));
-            d.style.setProperty("--dwell", (parseFloat(s.getAttribute("data-dwell")) || 9) + "s");
+            // A slide that plays a different clip on phones can set its own time there.
+            var narrow = window.matchMedia && window.matchMedia("(max-width: 760px)").matches;
+            d.style.setProperty("--dwell", (parseFloat((narrow && s.getAttribute("data-dwell-narrow")) || s.getAttribute("data-dwell")) || 9) + "s");
             d.appendChild(document.createElement("i"));
             d.addEventListener("click", function () { go(i); });
             d.firstChild.addEventListener("animationend", function () { if (i === idx) go(idx + 1); });
