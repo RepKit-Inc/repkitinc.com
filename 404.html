@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Not found — RepKit</title>
+    <script>
+        // Invite links look like repkitapp.com/r/CODE. This site is static, so
+        // that path has no page of its own: send it to the home page with the
+        // code, where it is shown and carried into sign-up.
+        (function () {
+            var m = location.pathname.match(/^\/r\/([A-Za-z0-9]{4,12})\/?$/);
+            if (m) location.replace("/?ref=" + m[1].toUpperCase());
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        html, body { height: 100%; margin: 0; }
+        body { background: #0F1016; color: #fff; font-family: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+            display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px; box-sizing: border-box; }
+        h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.03em; margin: 0 0 10px; }
+        p { color: #8E919B; font-size: 17px; margin: 0 0 26px; }
+        a { display: inline-block; background: #F4434E; color: #fff; text-decoration: none; font-weight: 600; padding: 13px 24px; border-radius: 999px; }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>That page isn't here.</h1>
+        <p>The link may be old or mistyped.</p>
+        <a href="/">Go to RepKit</a>
+    </main>
+</body>
+</html>

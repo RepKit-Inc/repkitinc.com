@@ -204,6 +204,11 @@
                 radial-gradient(circle at 54px 50%, #28C840 5px, transparent 5.5px), #16171D; }
         .win img { width: 100%; height: auto; }
 
+        /* An invite link shows the referrer's code above the wordmark. */
+        .invite { display: inline-block; margin: 0 auto 26px; padding: 9px 18px; border-radius: 999px; font-size: 15px; color: #fff;
+            background: rgba(244,67,78,0.12); border: 1px solid rgba(244,67,78,0.35); }
+        .invite b { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.12em; color: var(--red-hi); font-weight: 700; }
+
         /* ---------- highlights reel ---------- */
         .hl { --slide: min(1080px, 86vw); }
         .hl-track { position: relative; display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory;
@@ -1108,10 +1113,26 @@
     (function () {
         var ua = navigator.userAgent || "";
         var store = /iPhone|iPad|iPod/.test(ua) ? "ios" : /Android/.test(ua) ? "android" : "web";
+        // An invite link (repkitapp.com/r/CODE) lands here as ?ref=CODE. Show
+        // the code, and carry it into web sign-up so setup can offer it back.
+        var ref = "";
+        try { ref = (new URLSearchParams(location.search).get("ref") || "").toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 12); } catch (e) {}
+        if (ref) {
+            document.querySelectorAll('a[href^="https://app.repkitapp.com/login?mode=signup"]').forEach(function (a) { a.href += "&ref=" + ref; });
+            var hero = document.querySelector(".hero .wrap");
+            if (hero) {
+                var note = document.createElement("p");
+                note.className = "invite";
+                note.appendChild(document.createTextNode("You've been invited. Enter code "));
+                var code = document.createElement("b"); code.textContent = ref; note.appendChild(code);
+                note.appendChild(document.createTextNode(" during setup for a free month of Pro."));
+                hero.insertBefore(note, hero.firstChild);
+            }
+        }
         var T = {
             ios: { href: "https://apps.apple.com/app/id6759590146", long: "Download on the App Store", short: "Get the app" },
             android: { href: "https://play.google.com/store/apps/details?id=com.repkitinc.app", long: "Get it on Google Play", short: "Get the app" },
-            web: { href: "https://app.repkitapp.com/login?mode=signup", long: "Start free on the web", short: "Start free" }
+            web: { href: "https://app.repkitapp.com/login?mode=signup" + (ref ? "&ref=" + ref : ""), long: "Start free on the web", short: "Start free" }
         }[store];
         document.querySelectorAll("[data-cta]").forEach(function (a) {
             a.href = T.href;
