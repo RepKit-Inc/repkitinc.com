@@ -196,11 +196,17 @@
         /* The same explainer in the Memory section: it plays once the section scrolls in. */
         .stage .media.mem { width: min(470px, 84%); margin: 64px 0; display: flex; flex-direction: column; gap: 12px; }
         .stage .media.mem .mem-chip { font-size: 16px; }
-        .stage.in .mem-chip { opacity: 1; transform: none; }
-        .stage.in .mem-chip:nth-child(1) { transition-delay: 0.5s; } .stage.in .mem-chip:nth-child(2) { transition-delay: 1.2s; }
-        .stage.in .mem-chip:nth-child(3) { transition-delay: 1.9s; } .stage.in .mem-chip:nth-child(4) { transition-delay: 2.6s; }
-        .stage.in .mem-chip:nth-child(5) { transition-delay: 3.3s; }
-        .stage.in .mem-out { opacity: 1; transition-delay: 4.2s; }
+        /* It loops, like the clips in the other sections: cards arrive one at a time, hold, leave together. */
+        @keyframes mem1 { 0%, 4.5% { opacity: 0; transform: translateY(14px); } 11.0%, 87% { opacity: 1; transform: none; } 93%, 100% { opacity: 0; transform: none; } }
+        @keyframes mem2 { 0%, 11% { opacity: 0; transform: translateY(14px); } 17.5%, 87% { opacity: 1; transform: none; } 93%, 100% { opacity: 0; transform: none; } }
+        @keyframes mem3 { 0%, 17.5% { opacity: 0; transform: translateY(14px); } 24.0%, 87% { opacity: 1; transform: none; } 93%, 100% { opacity: 0; transform: none; } }
+        @keyframes mem4 { 0%, 24% { opacity: 0; transform: translateY(14px); } 30.5%, 87% { opacity: 1; transform: none; } 93%, 100% { opacity: 0; transform: none; } }
+        @keyframes mem5 { 0%, 30.5% { opacity: 0; transform: translateY(14px); } 37.0%, 87% { opacity: 1; transform: none; } 93%, 100% { opacity: 0; transform: none; } }
+        @keyframes mem6 { 0%, 38.5% { opacity: 0; } 45.0%, 87% { opacity: 1; } 93%, 100% { opacity: 0; } }
+        .stage.in .mem-chip, .stage.in .mem-out { animation: mem1 11s var(--ease) infinite both; transition: none; }
+        .stage.in .mem-chip:nth-child(2) { animation-name: mem2; } .stage.in .mem-chip:nth-child(3) { animation-name: mem3; }
+        .stage.in .mem-chip:nth-child(4) { animation-name: mem4; } .stage.in .mem-chip:nth-child(5) { animation-name: mem5; }
+        .stage.in .mem-out { animation-name: mem6; }
         .on-narrow { display: none; }
         @media (max-width: 760px) { .stage .on-wide { display: none; } .stage .on-narrow { display: block; }
             .stage.wide .media.on-narrow { width: min(280px, 64%); margin: 40px auto 48px; } }
@@ -448,7 +454,7 @@
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             .js .rv { opacity: 1; transform: none; transition: none; }
-            .mem-chip, .mem-out { opacity: 1; transform: none; transition: none; }
+            .mem-chip, .mem-out, .stage.in .mem-chip, .stage.in .mem-out { opacity: 1; transform: none; transition: none; animation: none; }
             dialog.sheet[open] .sheet-in { animation: none; }
         }
     </style>
