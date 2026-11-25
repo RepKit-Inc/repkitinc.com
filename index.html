@@ -193,6 +193,14 @@
         .hl-slide.on .mem-chip:nth-child(3) { transition-delay: 1.7s; } .hl-slide.on .mem-chip:nth-child(4) { transition-delay: 2.4s; }
         .hl-slide.on .mem-chip:nth-child(5) { transition-delay: 3.1s; }
         .hl-slide.on .mem-out { opacity: 1; transition-delay: 4s; }
+        /* The same explainer in the Memory section: it plays once the section scrolls in. */
+        .stage .media.mem { width: min(470px, 84%); margin: 64px 0; display: flex; flex-direction: column; gap: 12px; }
+        .stage .media.mem .mem-chip { font-size: 16px; }
+        .stage.in .mem-chip { opacity: 1; transform: none; }
+        .stage.in .mem-chip:nth-child(1) { transition-delay: 0.5s; } .stage.in .mem-chip:nth-child(2) { transition-delay: 1.2s; }
+        .stage.in .mem-chip:nth-child(3) { transition-delay: 1.9s; } .stage.in .mem-chip:nth-child(4) { transition-delay: 2.6s; }
+        .stage.in .mem-chip:nth-child(5) { transition-delay: 3.3s; }
+        .stage.in .mem-out { opacity: 1; transition-delay: 4.2s; }
         .on-narrow { display: none; }
         @media (max-width: 760px) { .stage .on-wide { display: none; } .stage .on-narrow { display: block; }
             .stage.wide .media.on-narrow { width: min(280px, 64%); margin: 40px auto 48px; } }
@@ -397,6 +405,9 @@
             .stage .copy { padding-bottom: 0; }
             .stage .media { margin: 40px 0 48px; width: min(280px, 64%); }
             .stage .media.duo { width: min(340px, 86%); margin: 40px 0 48px; }
+            .stage .media.mem { width: 86%; margin: 30px 0 44px; gap: 9px; }
+            .stage .media.mem .mem-chip { font-size: 14.5px; }
+            .stage .media.mem .mem-chip:nth-child(5) { display: block; }
             .stage.wide .media { margin: 40px auto -4%; width: 92%; }
             .minis, .values { grid-template-columns: 1fr; gap: 14px; }
             .t7, .t5 { grid-column: 1 / -1; }
@@ -629,7 +640,14 @@
                         <p class="lead">RepKit remembers what you sell, how you sell it and what you believe. Every call sheet and every answer gets more tailored to you.</p>
                         <button class="more" data-open="m-memory"><i><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></i>What it remembers</button>
                     </div>
-                    <div class="media phone shot"><img src="/assets/shots/memory.jpg" alt="What you sell in RepKit: your product, your buyers and why they buy" loading="lazy"></div>
+                    <div class="media mem" aria-label="Examples of what RepKit remembers">
+                        <div class="mem-chip"><small>What you sell</small>Supplier-management software for aerospace and defense</div>
+                        <div class="mem-chip"><small>Who buys</small>VP Supply Chain or Director of Procurement</div>
+                        <div class="mem-chip"><small>How you sell</small>SPIN selling. Questions first, pitch last.</div>
+                        <div class="mem-chip"><small>What you believe</small>Sell the pain, not the features.</div>
+                        <div class="mem-chip"><small>Last time at SpaceX</small>Elena championed the deal after discovery</div>
+                        <p class="mem-out">All of it goes into your next call sheet.</p>
+                    </div>
 
                 </div>
                 <div class="minis">
@@ -796,7 +814,7 @@
             <div class="values">
                 <div class="value rv"><svg class="icon"><use href="#i-out"/></svg><h3>It goes where you go.</h3><p>The account is yours. Change jobs and your tools, workflows and career intel stay with you.</p></div>
                 <div class="value rv"><svg class="icon"><use href="#i-lock"/></svg><h3>Your notes stay yours.</h3><p>No ads. Never sold. Delete your account and data anytime in Settings.</p></div>
-                <div class="value rv"><svg class="icon"><use href="#i-eyeoff"/></svg><h3>No manager view.</h3><p>Nobody is grading your activity. There is no dashboard for your boss.</p></div>
+                <div class="value rv"><svg class="icon"><use href="#i-eyeoff"/></svg><h3>No manager view.</h3><p>Nobody is micromanaging you. There is no dashboard for your boss.</p></div>
             </div>
         </div>
     </section>
